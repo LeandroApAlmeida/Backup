@@ -1,0 +1,6 @@
+D:\2. SOFTWARE\2. PROJETOS\BACKUP_DOTNET\src\BackupManager\BackupManager\obj\Debug\BackupManager.csproj.AssemblyReference.cache
+D:\2. SOFTWARE\2. PROJETOS\BACKUP_DOTNET\src\BackupManager\BackupManager\obj\Debug\BackupManager.Forms.FormatDriveDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\BACKUP_DOTNET\src\BackupManager\BackupManager\obj\Debug\BackupManager.MainWindow.resources
+D:\2. SOFTWARE\2. PROJETOS\BACKUP_DOTNET\src\BackupManager\BackupManager\obj\Debug\BackupManager.Properties.Resources.resources
+D:\2. SOFTWARE\2. PROJETOS\BACKUP_DOTNET\src\BackupManager\BackupManager\obj\Debug\BackupManager.csproj.GenerateResource.cache
+D:\2. SOFTWARE\2. PROJETOS\BACKUP_DOTNET\src\BackupManager\BackupManager\obj\Debug\BackupManager.csproj.CoreCompileInputs.cache

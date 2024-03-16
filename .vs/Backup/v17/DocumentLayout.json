@@ -1,0 +1,183 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\drive\\drive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|solutionrelative:drive\\drive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\driveinfodialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\driveinfodialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\driveinfodialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\driveinfodialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\errorlogdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\errorlogdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\directoriesdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\directoriesdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\directoriesdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\directoriesdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87552812-6B6E-417A-BBEF-4B8EA94B728D}|Windows\\Windows.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\windows\\windowssystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87552812-6B6E-417A-BBEF-4B8EA94B728D}|Windows\\Windows.csproj|solutionrelative:windows\\windowssystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Drive.cs",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\Drive.cs",
+              "RelativeDocumentMoniker": "Drive\\Drive.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\Drive.cs",
+              "RelativeToolTip": "Drive\\Drive.cs",
+              "ViewState": "AQIAAMcAAAAAAAAAAAAgwNcAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T22:47:51.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SelectDriveDialog.cs",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\SelectDriveDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
+              "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowCMAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:46:13.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SelectDriveDialog.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\SelectDriveDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:46:01.65Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DriveInfoDialog.cs",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DriveInfoDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\DriveInfoDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DriveInfoDialog.cs",
+              "RelativeToolTip": "Backup\\Forms\\DriveInfoDialog.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowEMAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:41:47.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ErrorLogDialog.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\ErrorLogDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\ErrorLogDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\ErrorLogDialog.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\ErrorLogDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:25:59.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DirectoriesDialog.cs",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DirectoriesDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\DirectoriesDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DirectoriesDialog.cs",
+              "RelativeToolTip": "Backup\\Forms\\DirectoriesDialog.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAA4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:10:59.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DirectoriesDialog.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DirectoriesDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\DirectoriesDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DirectoriesDialog.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\DirectoriesDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:10:56.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DriveInfoDialog.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DriveInfoDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\DriveInfoDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\DriveInfoDialog.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\DriveInfoDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:10:55.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WindowsSystem.cs",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Windows\\WindowsSystem.cs",
+              "RelativeDocumentMoniker": "Windows\\WindowsSystem.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Windows\\WindowsSystem.cs",
+              "RelativeToolTip": "Windows\\WindowsSystem.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAowH4AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T09:02:41.811Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

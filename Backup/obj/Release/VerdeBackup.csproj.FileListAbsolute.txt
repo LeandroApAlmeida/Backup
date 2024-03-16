@@ -1,0 +1,41 @@
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\VerdeBackup.exe.config
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\VerdeBackup.exe
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\VerdeBackup.pdb
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\System.Windows.Forms.Ribbon.dll
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.AssemblyReference.cache
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.AboutDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.BackupHistoryDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.FindFilesModeDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.DirectoriesDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.DriveInfoDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.InstallDriveDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.MainWindow.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.SelectDriveDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Forms.UninstallDriveDialog.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.Properties.Resources.resources
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.GenerateResource.cache
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.CoreCompileInputs.cache
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.CopyComplete
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.exe
+D:\2. SOFTWARE\2. PROJETOS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.pdb
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\System.Windows.Forms.Ribbon.dll
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.AssemblyReference.cache
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.GenerateResource.cache
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBackup.csproj.CoreCompileInputs.cache
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\VerdeBac.C060080F.Up2Date
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\Backup.exe.config
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\Backup.exe
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\bin\Release\Backup.pdb
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.AboutDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.BackupHistoryDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.ErrorLogDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.FindFilesModeDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.DirectoriesDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.DriveInfoDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.InstallDriveDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.MainWindow.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.SelectDriveDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Forms.UninstallDriveDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.Properties.Resources.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.exe
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\VERDE_BACKUP\src\VerdeBackup\VerdeBackup\obj\Release\Backup.pdb
