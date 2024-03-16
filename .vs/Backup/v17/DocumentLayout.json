@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|solutionrelative:drive\\drive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -76,7 +76,7 @@
               "RelativeDocumentMoniker": "Drive\\Drive.cs",
               "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\Drive.cs",
               "RelativeToolTip": "Drive\\Drive.cs",
-              "ViewState": "AQIAAMcAAAAAAAAAAAAgwNcAAAAwAAAA",
+              "ViewState": "AQIAAMcAAAAAAAAAAAAgwM4AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-16T22:47:51.655Z",
               "EditorCaption": ""
@@ -91,8 +91,7 @@
               "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAowCMAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-16T09:46:13.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-16T09:46:13.813Z"
             },
             {
               "$type": "Document",
@@ -103,8 +102,7 @@
               "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs [Design]",
               "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-16T09:46:01.65Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-03-16T09:46:01.65Z"
             },
             {
               "$type": "Document",
