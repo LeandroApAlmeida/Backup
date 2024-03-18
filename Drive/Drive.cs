@@ -250,12 +250,7 @@ namespace Backup.Drive {
         ///
         /// <exception cref="Exception"></exception>
         public void Install() {
-            if (SafeRestore.IsPendingRestore) {
-                throw new Exception("Restauração de arquivos pendente.");
-            }
-            if (isInstalled) {
-                throw new Exception("Este dipositivo já foi instalado.");
-            }
+            CheckPermission(false, true, true);
             StringBuilder sb = new StringBuilder(16);
             sb.Append("BDI#");
             Random rnd = new Random();
@@ -291,15 +286,7 @@ namespace Backup.Drive {
         /// backup.</param>
         /// <exception cref="Exception">Erro ao excluir os arquivos.</exception>
         public void Uninstall(bool keepBackupLog) {
-            if (!isLocked) {
-                throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
-            }
-            if (SafeRestore.IsPendingRestore) {
-                throw new Exception("Restauração de arquivos pendente.");
-            }
-            if (!isInstalled) {
-                throw new Exception("Dispositivo não está instalado.");
-            }
+            CheckPermission(true, true, true);
             try {
                 installationDirectory.SetHidden(false);
                 installationFile.Delete();
@@ -344,10 +331,10 @@ namespace Backup.Drive {
         /// específicas de acordo com a interface <i>ISearchFilesListener</i>.
         /// </summary>
         /// <param name="listeners">Ouvintes do processo de busca.</param>
-        public void SearchUpdatesAsynk(int mode, params ISearchBackupUpdatesListener[] listeners) {
+        public void SearchBackupUpdatesAsynk(int mode, params ISearchBackupUpdatesListener[] listeners) {
             lock (this) {
                 if (!isProcessing) {
-                    Thread thread = new Thread(() => {SearchUpdates(mode, listeners);});
+                    Thread thread = new Thread(() => {SearchBackupUpdates(mode, listeners);});
                     thread.IsBackground = true;
                     thread.Start();
                 }
@@ -362,23 +349,11 @@ namespace Backup.Drive {
         /// locais, para excluí-los.
         /// </summary>
         /// <param name="listeners">Ouvintes do processo de busca.</param>
-        private void SearchUpdates(int mode, params ISearchBackupUpdatesListener[] listeners) {
+        private void SearchBackupUpdates(int mode, params ISearchBackupUpdatesListener[] listeners) {
             isProcessing = true;
             abortedProcess = false;
             try {
-                // A Unidade de Backup deve estar bloqueada.
-                if (!isLocked) {
-                    throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
-                }
-                // Se houver restauração pendente não pode prosseguir.
-                if (SafeRestore.IsPendingRestore) {
-                    throw new Exception("Restauração de arquivos pendente.");
-                }
-                // Se a Unidade de Backup não estiver instalada, não permite executar
-                // a busca.
-                if (!isInstalled) {
-                    throw new Exception("Dispositivo não está instalado.");
-                }
+                CheckPermission(true, true, true);
                 // Verifica se a lista de diretórios para backup não está vazia.
                 bool empty = true;
                 foreach (string directory in backupDirectoriesList) {
@@ -621,19 +596,7 @@ namespace Backup.Drive {
             isProcessing = true;
             abortedProcess = false;
             try {
-                // A Unidade de Backup deve estar bloqueada.
-                if (!isLocked) {
-                    throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
-                }
-                // Se houver restauração pendente não pode prosseguir.
-                if (SafeRestore.IsPendingRestore) {
-                    throw new Exception("Restauração de arquivos pendente.");
-                }
-                // Se a Unidade de Backup não estiver instalada, não permite executar
-                // o backup.
-                if (!isInstalled) {
-                    throw new Exception("Dispositivo não está instalado.");
-                }
+                CheckPermission(true, true, true);
                 bool copyFiles = !abortedProcess && ((createdFilesList.Count > 0) ||
                 (updatedFilesList.Count > 0) || (deletedFilesList.Count > 0));
                 if (copyFiles) {
@@ -772,6 +735,155 @@ namespace Backup.Drive {
         }
 
 
+        public void SearchRestoreFilesAsynk(List<Drive> targetDrivesList,
+        params ISearchRestoreFilesListener[] listeners) {
+            lock (this) {
+                if (!isProcessing) {
+                    Thread thread = new Thread(() => { 
+                        SearchRestoreFiles(targetDrivesList, listeners); 
+                    });
+                    thread.IsBackground = true;
+                    thread.Start();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Buscar por arquivos novos, removidos ou alterados nos diretórios locais e que
+        /// deverão ser copiados para ou excluídos da Unidade de Backup. Também verifica
+        /// na Unidade de Backup se há arquivos que não coincidem com os dos diretórios
+        /// locais, para excluí-los.
+        /// </summary>
+        /// <param name="listeners">Ouvintes do processo de busca.</param>
+        private void SearchRestoreFiles(List<Drive> targetDrivesList,
+        params ISearchRestoreFilesListener[] listeners) {
+            try {
+                CheckPermission(true, false, true);
+
+
+
+
+
+
+
+                /*
+
+
+
+
+
+
+
+
+
+
+
+                List<string> directoriesTree = new List<string>();
+                LinkedList<FileInfo> restoreFiles = new LinkedList<FileInfo>();
+                foreach (string directory in backupDirectoriesList) {
+                    CheckIfTheProcessHasBeenAborted();
+                    string backupDirectory = RelativePath(directory);
+                    directoriesTree.Add(backupDirectory);
+                    LinkedList<string> subdirectories = new LinkedList<string>();
+                    ListSubdirectoriesTree(backupDirectory, subdirectories);
+                    foreach (string subdirectory in subdirectories) {
+                        directoriesTree.Add(subdirectory);
+                    }
+                }
+
+
+
+
+
+
+
+
+
+                // Lista todos os arquivos na Unidade de Backup que estão pendentes
+                // de recuperação. Como é possível interromper a operação de recuperação,
+                // neste método lista somente os arquivos que ainda não foram copiados.
+                foreach (string directory in directoriesTree) {
+                    CheckIfTheProcessHasBeenAborted();
+                    if (Directory.Exists(directory)) {
+                        string[] files = Directory.GetFiles(directory);
+                        if (files.Length > 0) {
+                            foreach (string file in files) {
+                                CheckIfTheProcessHasBeenAborted();
+                                string targetFile = RelativePath(
+                                    targetDrivesList.RootDirectory,
+                                    file
+                                );
+                                if (!File.Exists(targetFile)) {
+                                    restoreFiles.AddLast(new FileInfo(file));
+                                }
+                            }
+                        }
+                    }
+                }
+                // Notifica os ouvintes do processo de restauração para listar os 
+                // arquivos pendentes de recuperação.
+                foreach (IRestoreListener listener in listeners) {
+                    listener.ListRestoreFiles(restoreFiles);
+                }
+                // Cria a hierarquia de diretórios.
+                foreach (string directory in directoriesTree) {
+                    CheckIfTheProcessHasBeenAborted();
+                    if (Directory.Exists(directory)) {
+                        string targetDirectory = RelativePath(
+                            targetDrivesList.RootDirectory,
+                            directory
+                        );
+                        if (!Directory.Exists(targetDirectory)) {
+                            CreateDirectory(targetDirectory);
+                        }
+                    }
+                }
+                foreach (IRestoreListener listener in listeners) {
+                    listener.RestoreInitialized(restoreFiles.Count);
+                }
+                // Copia os arquivos da Unidade de Backup para o drive de destino.
+                int currentStep = 1;
+                foreach (FileInfo file in restoreFiles) {
+                    CheckIfTheProcessHasBeenAborted();
+                    try {
+                        string targetFile = RelativePath(
+                            targetDrivesList.RootDirectory,
+                            file.FullName
+                        );
+                        CopyFile(file.FullName, targetFile);
+                        foreach (IRestoreListener listener in listeners) {
+                            listener.ProcessingFile(currentStep, file.FullName);
+                        }
+                    } catch (Exception ex) {
+                        damagedFilesList.AddLast(file.FullName);
+                    } finally {
+                        currentStep++;
+                    }
+                }
+                // Exclui o arquivo de controle de restauração.
+                SafeRestore.RestoreDone();
+
+                */
+            } catch (Exception ex) {
+                if (!abortedProcess) {
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreAbortedByError(ex);
+                    }
+                } else {
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreAbortedByUser();
+                    }
+                }
+            } finally {
+                isProcessing = false;
+                foreach (IRestoreListener listener in listeners) {
+                    listener.RestoreDone(damagedFilesList);
+                }
+            }
+        }
+
+
         /// <summary>
         /// Fazer a restauração dos arquivos da Unidade de Backup para um drive local do computador. A 
         /// chamada a este método dispara uma Thread que fará o restore de modo assíncrono, sendo
@@ -905,6 +1017,62 @@ namespace Backup.Drive {
                 }
             } 
             */
+        }
+
+
+        /// <summary>
+        /// Verificar se pode-se obter permissão para alterar arquivos na Unidade
+        /// de Backup. São três condições a serem verificadas:
+        /// 
+        /// <br><br></br></br>
+        /// 
+        /// <ol>
+        /// 
+        /// <li>
+        /// <b>Bloqueio da Unidade de Backup</b>: A Unidade de Backup está bloqueada
+        /// para o processo corrente. Desta forma, nenhum outro processo poderá alterar
+        /// arquivos nela.
+        /// </li>
+        /// 
+        /// <br></br>
+        /// 
+        /// <li>
+        /// <b>Restauração pendente</b>: Uma operação de restauração de arquivos para
+        /// o sistema local está pendente. Desta forma, será necessário concluir esta
+        /// operação para continuar a usar a Unidade de Backup.
+        /// </li>
+        /// 
+        /// <br></br>
+        /// 
+        /// <li>
+        /// <b>Instalação da Unidade de Backup</b>: A Unidade de Backup está instalada.
+        /// A Unidade de Backup está instalada quando um conjunto de arquivos pré definidos
+        /// estão presentes na raiz da Unidade de Backup.
+        /// </li>
+        /// 
+        /// </ol>
+        /// 
+        /// </summary>
+        /// <param name="checkLocked"></param>
+        /// <param name="checkRestore"></param>
+        /// <param name="checkInstalled"></param>
+        /// <exception cref="Exception"></exception>
+        private void CheckPermission(bool checkLocked, bool checkRestore, bool checkInstalled) {
+            if (checkLocked) {
+                if (!isLocked) {
+                    throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
+                }
+            }
+            if (checkRestore) {
+                if (SafeRestore.IsPendingRestore) {
+                    throw new Exception("Restauração de arquivos pendente.");
+                }
+            }
+            if (checkInstalled) {
+                if (!isInstalled) {
+                    throw new Exception("Dispositivo não está instalado.");
+                }
+            }
         }
 
 
@@ -1070,12 +1238,7 @@ namespace Backup.Drive {
         /// <returns>Lista dos diretórios que não foram inseridos.</returns>
         /// <exception cref="Exception"></exception>
         public List<string> InsertSourceDirectories(List<string> directoriesList) {
-            if (!isLocked) {
-                throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
-            }
-            if (SafeRestore.IsPendingRestore) {
-                throw new Exception("Restauração de arquivos pendente.");
-            }
+            CheckPermission(true, true, true);
             List<string> insertedList = new List<string>();
             List<string> excludedList = new List<string>();
             foreach (string directory in directoriesList) {
@@ -1136,12 +1299,7 @@ namespace Backup.Drive {
         /// <param name="directoriesList">Lista dos diretórios a serem excluídos.</param>
         /// <exception cref="Exception"></exception>
         public void DeleteSourceDirectories(List<string> directoriesList) {
-            if (!isLocked) {
-                throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
-            }
-            if (SafeRestore.IsPendingRestore) {
-                throw new Exception("Restauração de arquivos pendente.");
-            }
+            CheckPermission(true, true, true);
             foreach (string directory in directoriesList) {
                 backupDirectoriesList.Remove(directory);
             }

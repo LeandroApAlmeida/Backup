@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Backup.exe.manifest" size="5927">
+    <dependentAssembly dependencyType="install" codebase="Backup.exe.manifest" size="5935">
       <assemblyIdentity name="Backup.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rCTzP5NDefE5IEMDwN/6hvQmevRFuywItddY+oHTflE=</dsig:DigestValue>
+        <dsig:DigestValue>dU8FQthvaJTBzJ6gTTbvAd/sjH5sPuOq++bnv41OFLI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

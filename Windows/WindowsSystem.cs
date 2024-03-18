@@ -8,6 +8,7 @@ using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 using System.Threading;
 
 namespace Backup.Environment {
@@ -123,7 +124,6 @@ namespace Backup.Environment {
             int? clusterSize = null;
             var psi = new ProcessStartInfo();
             psi.FileName = "format.com";
-            psi.CreateNoWindow = true;
             psi.WorkingDirectory = System.Environment.SystemDirectory;
             psi.Arguments = "/FS:" + fileSystem + " /Y" + " /V:" + label +
             (quickFormat ? " /Q" : "") +
@@ -154,17 +154,13 @@ namespace Backup.Environment {
         /// <param name="path">Path do arquivo.</param>
         /// <returns>Descrição do arquivo.</returns>
         public static string GetFileDescription(string path) {
-            string extensionName;
-            if (path.Contains("\\")) {
-                path = path.Substring(path.LastIndexOf("\\"));
-            }
-            if (path.Contains(".") == false) {
+            FileInfo file = new FileInfo(path);
+            string ext = file.Extension;
+            if (ext.Equals(String.Empty)) {
                 return "Unknown";
-            } else {
-                path = path.Substring(path.LastIndexOf("."));
             }
-            extensionName = (string)Registry.GetValue("HKEY_CLASSES_ROOT\\" + path, "", path);
-            return (string)Registry.GetValue("HKEY_CLASSES_ROOT\\" + extensionName, "", path);
+            string extensionName = (string) Registry.GetValue("HKEY_CLASSES_ROOT\\" + ext, "", ext);
+            return (string) Registry.GetValue("HKEY_CLASSES_ROOT\\" + extensionName, "", ext);
         }
 
 
@@ -241,11 +237,18 @@ namespace Backup.Environment {
 
 
         /// <summary>
-        /// Desliga o computador após uma pausa de 5 minutos, período no qual
-        /// o usuário pode cancelar o desligamento.
+        /// Desliga o computador forçando o encerramento de todos os
+        /// programas que estão abertos.
         /// </summary>
         public static void Shutdown() {
-            Process.Start("shutdown", "/s /t 300");
+            var psi = new ProcessStartInfo();
+            psi.FileName = "shutdown";
+            psi.Arguments = "/s /f /t 0";
+            psi.UseShellExecute = true;
+            psi.CreateNoWindow = true;
+            psi.RedirectStandardOutput = false;
+            psi.RedirectStandardInput = false;
+            Process.Start(psi);
         }
 
 

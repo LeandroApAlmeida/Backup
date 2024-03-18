@@ -413,6 +413,16 @@ namespace Backup.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap socket_and_plug {
+            get {
+                object obj = ResourceManager.GetObject("socket_and_plug", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap storage_32 {
             get {
                 object obj = ResourceManager.GetObject("storage_32", resourceCulture);

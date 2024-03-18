@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drive {
+namespace Backup.Drive {
 
-    internal interface ISearchRestoreUpdatesListener {
+    public interface ISearchRestoreFilesListener {
 
 
         /// <summary>

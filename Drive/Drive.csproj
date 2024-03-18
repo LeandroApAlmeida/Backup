@@ -7,7 +7,7 @@
     <ProjectGuid>{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Drive</RootNamespace>
+    <RootNamespace>Backup.Drive</RootNamespace>
     <AssemblyName>Drive</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -64,7 +64,7 @@
     <Compile Include="InstallationFile.cs" />
     <Compile Include="IRestoreListener.cs" />
     <Compile Include="ISearchBackupUpdatesListener.cs" />
-    <Compile Include="ISearchRestoreUpdatesListener.cs" />
+    <Compile Include="ISearchRestoreFilesListener.cs" />
     <Compile Include="LastBackupFile.cs" />
     <Compile Include="LogParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -501,7 +501,9 @@ namespace Backup.Forms {
                 if (selectedDrive.Lock()) {
                     UpdateDriveSelectionStatus();
                     UpdateRecentFilesList();
-                    FindUpdates();
+                    rbbRunBackup.Enabled = false;
+                    rbpBackup.ButtonMoreEnabled = false;
+                    //FindUpdates();
                 } else {
                     MessageBox.Show(
                         this,
@@ -553,8 +555,8 @@ namespace Backup.Forms {
             lblNumFiles.Text = "    PROCESSANDO: ";
             pgbFiles.Value = 0;
             UpdateProcessingBackupStatus(true);
-            selectedDrive.SearchUpdatesAsynk(
-                Properties.Settings.Default.SearchUpdatesMode,
+            selectedDrive.SearchBackupUpdatesAsynk(
+                Settings.Default.SearchUpdatesMode,
                 this
             );
         }
@@ -600,7 +602,7 @@ namespace Backup.Forms {
 
         private void ActionAfterBackup() {
             switch (actionAfterBackupCode) {
-                case 2: WindowsSystem.Shutdown(); break;
+                case 2: new PowerOffTimeDialog(300).ShowDialog() ; break;
             }
         }
 

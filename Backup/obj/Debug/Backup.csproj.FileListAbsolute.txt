@@ -4,10 +4,15 @@ D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Backup.ap
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Backup.exe
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Backup.pdb
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Drive.dll
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Environment.dll
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\System.Windows.Forms.Ribbon.dll
-D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Windows.dll
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Drive.pdb
-D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Windows.pdb
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\bin\Debug\Environment.pdb
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\bin\Backup.exe.config
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\bin\Backup.exe.manifest
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\bin\Backup.application
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\bin\Backup.exe
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\bin\Backup.pdb
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.csproj.AssemblyReference.cache
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.AboutDialog.resources
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.ActionAfterBackupDialog.resources
@@ -28,3 +33,4 @@ D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.ap
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.csproj.Up2Date
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.exe
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.pdb
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.PoweroffTimeDialog.resources

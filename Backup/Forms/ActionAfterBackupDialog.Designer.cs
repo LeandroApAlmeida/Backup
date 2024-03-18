@@ -59,6 +59,7 @@
             this.rbShutdown.TabStop = true;
             this.rbShutdown.Text = "Desligar o computador";
             this.rbShutdown.UseVisualStyleBackColor = true;
+            this.rbShutdown.CheckedChanged += new System.EventHandler(this.rbShutdown_CheckedChanged);
             // 
             // ActionAfterBackupDialog
             // 
