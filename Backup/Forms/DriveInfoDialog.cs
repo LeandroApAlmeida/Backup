@@ -2,7 +2,8 @@
 using Backup.Utils;
 using System;
 using System.Windows.Forms;
-using static Backup.Environment.WindowsSystem;
+using static Backup.Windows.WindowsSystem;
+using DriveType = Backup.Windows.DriveType;
 
 namespace Backup.Forms {
 

@@ -97,7 +97,7 @@
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(110, 25);
             this.btnSelect.TabIndex = 2;
-            this.btnSelect.Text = "Restaurar";
+            this.btnSelect.Text = "Confirmar";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 

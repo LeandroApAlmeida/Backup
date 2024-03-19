@@ -1,7 +1,8 @@
-﻿using Backup.Environment;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Backup.Windows;
 using System.IO;
-using DriveType = Backup.Environment.WindowsSystem.DriveType;
+using DriveType = Backup.Windows.DriveType;
+
 
 namespace Backup.Drive {
 
@@ -16,7 +17,7 @@ namespace Backup.Drive {
 
 
         public DrivesManager() {
-            internalDrives = GetDrives(WindowsSystem.DriveType.INTERNAL);
+            internalDrives = GetDrives(DriveType.INTERNAL);
         }
 
 
@@ -25,7 +26,7 @@ namespace Backup.Drive {
         /// </summary>
         /// <param name="driveType">Tipo de drive a listar.</param>
         /// <returns>Lista de drives segundo o tipo.</returns>
-        private List<Drive> GetDrives(WindowsSystem.DriveType driveType) {
+        private List<Drive> GetDrives(DriveType driveType) {
             List<DriveInfo> drives = WindowsSystem.GetDrives(driveType);
             List<Drive> drivesList = new List<Drive>(drives.Count);
             drives.ForEach(driveInfo => {drivesList.Add(new Drive(driveInfo, driveType));});

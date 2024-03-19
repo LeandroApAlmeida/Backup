@@ -1,12 +1,12 @@
 ﻿using Backup.Utils;
-using Backup.Environment;
+using Backup.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
-using DriveType = Backup.Environment.WindowsSystem.DriveType;
-using System.Linq;
+using DriveType = Backup.Windows.DriveType;
 
 namespace Backup.Drive {
 
@@ -98,8 +98,11 @@ namespace Backup.Drive {
         // Arquivo de ícone.
         private readonly IconFile iconFile;
 
+        // Diretório de destino do backup na Unidade de Backup.
+        private readonly DirectoryInfo backupDirectory;
+
         // Diretórios locais sob controle de backup.
-        private readonly LinkedList<string> backupDirectoriesList;
+        private readonly LinkedList<string> localDirectoriesList;
 
         // Lista dos arquivos locais a serem criados na Unidade de Backup.
         private readonly LinkedList<FileInfo> createdFilesList;
@@ -124,6 +127,9 @@ namespace Backup.Drive {
 
         // Entradas de Log em formato texto codificado.
         private readonly LinkedList<string> logEntriesList;
+
+        // 
+        private readonly LinkedList<RestoreFiles> restoreFilesList;
 
         // Tipo do drive. Os tipos são: INTERNO, EXTERNO E REDE.
         private readonly DriveType driveType;
@@ -190,6 +196,7 @@ namespace Backup.Drive {
             deletedDirectoriesList = new LinkedList<string>();
             rootDirectoriesList = new LinkedList<string>();
             logEntriesList = new LinkedList<string>();
+            restoreFilesList = new LinkedList<RestoreFiles>();
             // Arquivos da instalação da Unidade de Backup.
             installationDirectory = new InstallationDirectory(driveInfo.Name + ".BackupDriveInstallation");
             directoriesFile = new DirectoriesFile(installationDirectory.Path + @"\BackupDirectories.xml");
@@ -199,9 +206,11 @@ namespace Backup.Drive {
             readmeFile = new ReadmeFile(driveInfo.Name + "Leia-me.txt");
             autorunFile = new AutorunFile(driveInfo.Name + "Autorun.inf");
             iconFile = new IconFile(driveInfo.Name + "BackupDrive.ico");
-            isInstalled = installationFile.Exists();
+            // Diretório de destino do backup.
+            backupDirectory = new DirectoryInfo(driveInfo.Name + @"\backup");
             // Verifica se é uma Unidade de Backup. Se for, carrega todos os dados sobre
             // a mesma, definidos durante a instalação ou na configuração da mesma.
+            isInstalled = installationFile.Exists();
             if (isInstalled) {
                 Dictionary<string, object> installationData = installationFile.Read();
                 uid = (string)installationData["uid"];
@@ -222,10 +231,10 @@ namespace Backup.Drive {
                 } else {
                     haveLastBackupTime = false;
                 }
-                backupDirectoriesList = new LinkedList<string>();
+                localDirectoriesList = new LinkedList<string>();
                 if (directoriesFile.Exists()) {
                     foreach (string directory in directoriesFile.Read()) {
-                        backupDirectoriesList.AddLast(directory);
+                        localDirectoriesList.AddLast(directory);
                     }
                 }
             }
@@ -356,7 +365,7 @@ namespace Backup.Drive {
                 CheckPermission(true, true, true);
                 // Verifica se a lista de diretórios para backup não está vazia.
                 bool empty = true;
-                foreach (string directory in backupDirectoriesList) {
+                foreach (string directory in localDirectoriesList) {
                     if (Directory.Exists(directory)) {
                         empty = false;
                         break;
@@ -368,7 +377,7 @@ namespace Backup.Drive {
                 // Total de arquivos a serem processados tanto nos diretórios locais quanto
                 // nos diretórios da Unidade de Backup.
                 int totalFiles = 0;
-                foreach (string directory in backupDirectoriesList) {
+                foreach (string directory in localDirectoriesList) {
                     totalFiles += CountFiles(directory);
                     string targetDirectory = RelativePath(directory);
                     if (Directory.Exists(targetDirectory)) {
@@ -381,12 +390,12 @@ namespace Backup.Drive {
                 }
                 ReleaseCounters();
                 int currentStep = 1;
-                foreach (string backupDirectory in backupDirectoriesList) {
+                foreach (string localDirectory in localDirectoriesList) {
                     CheckIfTheProcessHasBeenAborted();
-                    if (!Directory.Exists(backupDirectory)) continue;
+                    if (!Directory.Exists(localDirectory)) continue;
                     // Lista os arquivos na raiz do diretório de backup a serem criados
                     // ou atualizados na Unidade de Backup.
-                    string[] files1 = Directory.GetFiles(backupDirectory);
+                    string[] files1 = Directory.GetFiles(localDirectory);
                     foreach (string file in files1) {
                         CheckIfTheProcessHasBeenAborted();
                         foreach (ISearchBackupUpdatesListener listener in listeners) {
@@ -415,7 +424,7 @@ namespace Backup.Drive {
                     // Lista os arquivos nos subdiretórios do diretório de backup a serem
                     // criados ou atualizados na Unidade de Backup.
                     LinkedList<string> subdirectories1 = new LinkedList<string>();
-                    ListSubdirectoriesTree(backupDirectory, subdirectories1);
+                    ListSubdirectoriesTree(localDirectory, subdirectories1);
                     foreach (string subdirectory in subdirectories1) {
                         CheckIfTheProcessHasBeenAborted();
                         string targetSubdirectory = RelativePath(subdirectory);
@@ -452,10 +461,10 @@ namespace Backup.Drive {
                     // Os diretórios raiz na hierarquia do diretório de backup são
                     // colocados em lista separada para que sejam criados primeiro, 
                     // caso eles não tenham um correspondente na Unidade de Backup.
-                    string targetDirectory = RelativePath(backupDirectory);
+                    string targetDirectory = RelativePath(localDirectory);
                     if (!Directory.Exists(targetDirectory)) {
-                        createdDirectoriesList.AddFirst(backupDirectory);
-                        DirectoryInfo parent = Directory.GetParent(backupDirectory);
+                        createdDirectoriesList.AddFirst(localDirectory);
+                        DirectoryInfo parent = Directory.GetParent(localDirectory);
                         while (parent != null) {
                             CheckIfTheProcessHasBeenAborted();
                             string directory = RelativePath(parent.FullName);
@@ -482,7 +491,7 @@ namespace Backup.Drive {
                             listener.ProcessingFile(currentStep, file);
                         }
                         try {
-                            string localFile = RelativePath(backupDirectory, file);
+                            string localFile = RelativePath(localDirectory, file);
                             if (!File.Exists(localFile)) {
                                 // Arquivo na raiz do diretório de destino e sem equivalente
                                 // no diretório local.
@@ -509,7 +518,7 @@ namespace Backup.Drive {
                             foreach (ISearchBackupUpdatesListener listener in listeners) {
                                 listener.ProcessingFile(currentStep, file);
                             } 
-                            string localFile = RelativePath(backupDirectory, file);
+                            string localFile = RelativePath(localDirectory, file);
                             try {
                                 if (!File.Exists(localFile)) {
                                     // Arquivo na raiz do subdiretório de destino e sem equivalente
@@ -528,7 +537,7 @@ namespace Backup.Drive {
                         // então este deve ser excluído também da Unidade de Backup, para não existir
                         // diretório vazio nela.
                         string localSubdirectory = RelativePath(
-                            backupDirectory,
+                            localDirectory,
                             subdirectory
                         );
                         if (!Directory.Exists(localSubdirectory)) {
@@ -760,126 +769,95 @@ namespace Backup.Drive {
         params ISearchRestoreFilesListener[] listeners) {
             try {
                 CheckPermission(true, false, true);
-
-
-
-
-
-
-
-                /*
-
-
-
-
-
-
-
-
-
-
-
-                List<string> directoriesTree = new List<string>();
-                LinkedList<FileInfo> restoreFiles = new LinkedList<FileInfo>();
-                foreach (string directory in backupDirectoriesList) {
-                    CheckIfTheProcessHasBeenAborted();
-                    string backupDirectory = RelativePath(directory);
-                    directoriesTree.Add(backupDirectory);
-                    LinkedList<string> subdirectories = new LinkedList<string>();
-                    ListSubdirectoriesTree(backupDirectory, subdirectories);
-                    foreach (string subdirectory in subdirectories) {
-                        directoriesTree.Add(subdirectory);
-                    }
+                ReleaseCounters();
+                int totalFiles = 0;
+                foreach (Drive drive in targetDrivesList) {
+                    totalFiles += CountFiles(String.Concat(backupDirectory.FullName,
+                    @"\", drive.Letter[0]));
                 }
-
-
-
-
-
-
-
-
-
-                // Lista todos os arquivos na Unidade de Backup que estão pendentes
-                // de recuperação. Como é possível interromper a operação de recuperação,
-                // neste método lista somente os arquivos que ainda não foram copiados.
-                foreach (string directory in directoriesTree) {
+                CheckIfTheProcessHasBeenAborted();
+                foreach (ISearchRestoreFilesListener listener in listeners) {
+                    listener.SearchInitialized(totalFiles);
+                }
+                string[] backupFiles;
+                int currentStep = 1;
+                foreach (Drive drive in targetDrivesList) {
                     CheckIfTheProcessHasBeenAborted();
-                    if (Directory.Exists(directory)) {
-                        string[] files = Directory.GetFiles(directory);
-                        if (files.Length > 0) {
-                            foreach (string file in files) {
-                                CheckIfTheProcessHasBeenAborted();
-                                string targetFile = RelativePath(
-                                    targetDrivesList.RootDirectory,
-                                    file
-                                );
-                                if (!File.Exists(targetFile)) {
-                                    restoreFiles.AddLast(new FileInfo(file));
+                    RestoreFiles restoreFiles = new RestoreFiles(drive.Letter);
+                    LinkedList<string> subdirectories = new LinkedList<string>();
+                    string directory = String.Concat(backupDirectory.FullName, @"\", drive.Letter[0]);
+                    backupFiles = Directory.GetFiles(directory + @"\");
+                    for (int i = 0; i < backupFiles.Length; i++) {
+                        string backupFile = backupFiles[i];
+                        foreach (ISearchRestoreFilesListener listener in listeners) {
+                            listener.ProcessingFile(currentStep, backupFile);
+                        }
+                        string localFile = RelativePath(drive.Letter + @"\", backupFile);
+                        try {
+                            FileInfo sourceInfo = new FileInfo(backupFile);
+                            FileInfo targetInfo = new FileInfo(localFile);
+                            if (targetInfo.Exists) {
+                                if (UpdatedFile(sourceInfo, targetInfo, LAST_UPDATE_DATE_MODE)) {
+                                    bytesToRecord += sourceInfo.Length - targetInfo.Length;
+                                    restoreFiles.Files.AddLast(sourceInfo);
                                 }
+                            } else {
+                                bytesToRecord += sourceInfo.Length;
+                                restoreFiles.Files.AddLast(sourceInfo);
+                            }
+                        } catch (Exception ex) {
+                            damagedFilesList.AddLast(backupFile);
+                        } finally {
+                            currentStep++;
+                        }
+                    }
+                    ListSubdirectoriesTree(directory, subdirectories);
+                    foreach (string subdirectory in subdirectories) {
+                        CheckIfTheProcessHasBeenAborted();
+                        backupFiles = Directory.GetFiles(subdirectory);
+                        for (int i = 0; i < backupFiles.Length; i++) {
+                            CheckIfTheProcessHasBeenAborted();
+                            string backupFile = backupFiles[i];
+                            foreach (ISearchRestoreFilesListener listener in listeners) {
+                                listener.ProcessingFile(currentStep, backupFile);
+                            }
+                            string localFile = RelativePath(drive.Letter + @"\", backupFile);
+                            try {
+                                FileInfo sourceInfo = new FileInfo(backupFile);
+                                FileInfo targetInfo = new FileInfo(localFile);
+                                if (targetInfo.Exists) {
+                                    if (UpdatedFile(sourceInfo, targetInfo, LAST_UPDATE_DATE_MODE)) {
+                                        bytesToRecord += sourceInfo.Length - targetInfo.Length;
+                                        restoreFiles.Files.AddLast(sourceInfo);
+                                    }
+                                } else {
+                                    bytesToRecord += sourceInfo.Length;
+                                    restoreFiles.Files.AddLast(sourceInfo);
+                                }
+                            } catch (Exception ex) {
+                                damagedFilesList.AddLast(backupFile);
+                            } finally {
+                                currentStep++;
                             }
                         }
                     }
+                    restoreFilesList.AddLast(restoreFiles);
                 }
-                // Notifica os ouvintes do processo de restauração para listar os 
-                // arquivos pendentes de recuperação.
-                foreach (IRestoreListener listener in listeners) {
-                    listener.ListRestoreFiles(restoreFiles);
+                foreach (ISearchRestoreFilesListener listener in listeners) {
+                    listener.SearchFinished(restoreFilesList, damagedFilesList);
                 }
-                // Cria a hierarquia de diretórios.
-                foreach (string directory in directoriesTree) {
-                    CheckIfTheProcessHasBeenAborted();
-                    if (Directory.Exists(directory)) {
-                        string targetDirectory = RelativePath(
-                            targetDrivesList.RootDirectory,
-                            directory
-                        );
-                        if (!Directory.Exists(targetDirectory)) {
-                            CreateDirectory(targetDirectory);
-                        }
-                    }
-                }
-                foreach (IRestoreListener listener in listeners) {
-                    listener.RestoreInitialized(restoreFiles.Count);
-                }
-                // Copia os arquivos da Unidade de Backup para o drive de destino.
-                int currentStep = 1;
-                foreach (FileInfo file in restoreFiles) {
-                    CheckIfTheProcessHasBeenAborted();
-                    try {
-                        string targetFile = RelativePath(
-                            targetDrivesList.RootDirectory,
-                            file.FullName
-                        );
-                        CopyFile(file.FullName, targetFile);
-                        foreach (IRestoreListener listener in listeners) {
-                            listener.ProcessingFile(currentStep, file.FullName);
-                        }
-                    } catch (Exception ex) {
-                        damagedFilesList.AddLast(file.FullName);
-                    } finally {
-                        currentStep++;
-                    }
-                }
-                // Exclui o arquivo de controle de restauração.
-                SafeRestore.RestoreDone();
-
-                */
             } catch (Exception ex) {
                 if (!abortedProcess) {
-                    foreach (IRestoreListener listener in listeners) {
-                        listener.RestoreAbortedByError(ex);
+                    foreach (ISearchRestoreFilesListener listener in listeners) {
+                        listener.SearchAbortedByError(ex);
                     }
                 } else {
-                    foreach (IRestoreListener listener in listeners) {
-                        listener.RestoreAbortedByUser();
+                    foreach (ISearchRestoreFilesListener listener in listeners) {
+                        listener.SearchAbortedByUser();
                     }
                 }
             } finally {
                 isProcessing = false;
-                foreach (IRestoreListener listener in listeners) {
-                    listener.RestoreDone(damagedFilesList);
-                }
             }
         }
 
@@ -1148,6 +1126,7 @@ namespace Backup.Drive {
             deletedFilesList.Clear();
             updatedFilesList.Clear();
             damagedFilesList.Clear();
+            restoreFilesList.Clear();
         }
 
 
@@ -1243,8 +1222,8 @@ namespace Backup.Drive {
             List<string> excludedList = new List<string>();
             foreach (string directory in directoriesList) {
                 bool insert = true;
-                foreach (string backupDir in backupDirectoriesList) {
-                    String relativePath1 = backupDir.Substring(2, backupDir.Length - 2).ToUpper();
+                foreach (string localDirectory in localDirectoriesList) {
+                    String relativePath1 = localDirectory.Substring(2, localDirectory.Length - 2).ToUpper();
                     string parentDir = directory;
                     do {
                         string relativePath2 = parentDir.Substring(2, parentDir.Length - 2).ToUpper();
@@ -1264,18 +1243,18 @@ namespace Backup.Drive {
                 }
             }
             if (insertedList.Count > 0) {
-                foreach (string directory in backupDirectoriesList) {
+                foreach (string directory in localDirectoriesList) {
                     insertedList.Add(directory);
                 }
                 insertedList.Sort();
-                backupDirectoriesList.Clear();
+                localDirectoriesList.Clear();
                 foreach (string directory in insertedList) {
-                    backupDirectoriesList.AddLast(directory);   
+                    localDirectoriesList.AddLast(directory);   
                 }
-                directoriesFile.Write(backupDirectoriesList);
+                directoriesFile.Write(localDirectoriesList);
             }
             readmeFile.Delete();
-            readmeFile.Write(backupDirectoriesList);
+            readmeFile.Write(localDirectoriesList);
             return excludedList;
         }
 
@@ -1301,9 +1280,9 @@ namespace Backup.Drive {
         public void DeleteSourceDirectories(List<string> directoriesList) {
             CheckPermission(true, true, true);
             foreach (string directory in directoriesList) {
-                backupDirectoriesList.Remove(directory);
+                localDirectoriesList.Remove(directory);
             }
-            directoriesFile.Write(backupDirectoriesList);
+            directoriesFile.Write(localDirectoriesList);
         }
 
 
@@ -1333,7 +1312,7 @@ namespace Backup.Drive {
         /// </summary>
         public LinkedList<string> SourceDirectories {
             get {
-                return backupDirectoriesList;
+                return localDirectoriesList;
             }
         }
 

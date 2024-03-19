@@ -76,13 +76,7 @@
     <Compile Include="ReadmeFile.cs" />
     <Compile Include="RestoreFile.cs" />
     <Compile Include="SafeRestore.cs" />
-    <Compile Include="TargetDriveFiles.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Windows\Windows.csproj">
-      <Project>{87552812-6b6e-417a-bbef-4b8ea94b728d}</Project>
-      <Name>Windows</Name>
-    </ProjectReference>
+    <Compile Include="RestoreFiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -92,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BackupDrive.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Windows\Windows.csproj">
+      <Project>{87552812-6b6e-417a-bbef-4b8ea94b728d}</Project>
+      <Name>Windows</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

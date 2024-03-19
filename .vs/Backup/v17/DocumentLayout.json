@@ -3,32 +3,23 @@
   "WorkspaceRootPath": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{87552812-6B6E-417A-BBEF-4B8EA94B728D}|Windows\\Windows.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\windows\\windowssystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87552812-6B6E-417A-BBEF-4B8EA94B728D}|Windows\\Windows.csproj|solutionrelative:windows\\windowssystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\powerofftimedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\powerofftimedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\backup\\forms\\powerofftimedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\powerofftimedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\aboutdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\aboutdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\actionafterbackupdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\actionafterbackupdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\aboutdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\aboutdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Backup||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
@@ -42,7 +33,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,98 +57,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WindowsSystem.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Windows\\WindowsSystem.cs",
-              "RelativeDocumentMoniker": "Windows\\WindowsSystem.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Windows\\WindowsSystem.cs",
-              "RelativeToolTip": "Windows\\WindowsSystem.cs",
-              "ViewState": "AQIAAO8AAAAAAAAAAAAAwI8AAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "ActionAfterBackupDialog.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\ActionAfterBackupDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\ActionAfterBackupDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\ActionAfterBackupDialog.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\ActionAfterBackupDialog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T04:58:13.923Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindow.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\MainWindow.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
-              "RelativeToolTip": "Backup\\Forms\\MainWindow.cs",
-              "ViewState": "AQIAAE0CAAAAAAAAAAAWwE4CAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T04:48:10.802Z"
+              "WhenOpened": "2024-03-19T02:42:23.395Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "MainWindow.cs [Design]",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\MainWindow.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs [Design]",
-              "RelativeToolTip": "Backup\\Forms\\MainWindow.cs [Design]",
+              "Title": "Backup",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Backup.csproj",
+              "RelativeDocumentMoniker": "Backup\\Backup.csproj",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Backup.csproj",
+              "RelativeToolTip": "Backup\\Backup.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-19T02:12:16.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SelectDriveDialog.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\SelectDriveDialog.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T04:48:08.398Z"
+              "WhenOpened": "2024-03-19T02:07:37.763Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AboutDialog.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\AboutDialog.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\AboutDialog.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\AboutDialog.cs",
-              "RelativeToolTip": "Backup\\Forms\\AboutDialog.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T04:43:21.264Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AboutDialog.cs [Design]",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\AboutDialog.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\AboutDialog.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\AboutDialog.cs [Design]",
-              "RelativeToolTip": "Backup\\Forms\\AboutDialog.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T04:43:18.277Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PowerOffTimeDialog.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\PowerOffTimeDialog.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\PowerOffTimeDialog.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\PowerOffTimeDialog.cs",
-              "RelativeToolTip": "Backup\\Forms\\PowerOffTimeDialog.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAgwDcAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T04:22:28.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "Resources.resx",
               "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Properties\\Resources.resx",
               "RelativeDocumentMoniker": "Backup\\Properties\\Resources.resx",
               "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Properties\\Resources.resx",
               "RelativeToolTip": "Backup\\Properties\\Resources.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-03-18T04:05:24.235Z",
+              "WhenOpened": "2024-03-19T00:31:58.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PowerOffTimeDialog.cs [Design]",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\PowerOffTimeDialog.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\PowerOffTimeDialog.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\PowerOffTimeDialog.cs [Design]",
-              "RelativeToolTip": "Backup\\Forms\\PowerOffTimeDialog.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.cs",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\MainWindow.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
+              "RelativeToolTip": "Backup\\Forms\\MainWindow.cs",
+              "ViewState": "AQIAAHwAAAAAAAAAAAArwGICAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T03:57:23.88Z",
+              "WhenOpened": "2024-03-18T23:44:10.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.cs [Design]",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
+              "RelativeDocumentMoniker": "Backup\\Forms\\MainWindow.cs",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs [Design]",
+              "RelativeToolTip": "Backup\\Forms\\MainWindow.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T23:38:13.594Z",
               "EditorCaption": " [Design]"
             }
           ]

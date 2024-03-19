@@ -173,6 +173,16 @@ namespace Backup.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap drive_32 {
+            get {
+                object obj = ResourceManager.GetObject("drive_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eject_10 {
             get {
                 object obj = ResourceManager.GetObject("eject_10", resourceCulture);
@@ -446,6 +456,16 @@ namespace Backup.Properties {
         internal static System.Drawing.Bitmap usb_16 {
             get {
                 object obj = ResourceManager.GetObject("usb_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_24 {
+            get {
+                object obj = ResourceManager.GetObject("view_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

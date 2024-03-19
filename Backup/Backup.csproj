@@ -381,6 +381,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BackupDrive.ico" />
+    <None Include="Resources\drive_32.png" />
+    <None Include="Resources\view_24.png" />
     <None Include="Resources\socket_and_plug.png" />
     <None Include="Resources\file_details_32.png" />
     <None Include="Resources\folder32.png" />

@@ -1,6 +1,6 @@
 ﻿using System.Management;
 
-namespace Backup.Environment {
+namespace Backup.Windows {
 
     /// <summary>
     /// Define um ouvinte de eventos nas portas USB.

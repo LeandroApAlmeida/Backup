@@ -7,7 +7,7 @@
     <ProjectGuid>{87552812-6B6E-417A-BBEF-4B8EA94B728D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Backup.Environment</RootNamespace>
+    <RootNamespace>Backup.Windows</RootNamespace>
     <AssemblyName>Environment</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DriveType.cs" />
     <Compile Include="Formatter.cs" />
     <Compile Include="IUsbEventListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

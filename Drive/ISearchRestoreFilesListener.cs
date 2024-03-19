@@ -30,7 +30,7 @@ namespace Backup.Drive {
         /// <param name="deletedFilesList">Lista de arquivos que serão excluídos da unidade de backup.</param>
         /// <param name="updatedFilesList">Lista de arquivos que serão atualizados na unidade de backup.</param>
         /// <param name="errorFilesList">Lista de arquivos com erro no processamento.</param>
-        void SearchFinished(LinkedList<TargetDriveFiles> restorationFilesList, LinkedList<String> errorFilesList);
+        void SearchFinished(LinkedList<RestoreFiles> restoreFilesList, LinkedList<String> errorFilesList);
 
         /// <summary>
         /// Evento de processo abortado por erro.

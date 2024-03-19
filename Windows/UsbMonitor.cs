@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Management;
 
-namespace Backup.Environment {
+namespace Backup.Windows {
 
     /// <summary>
     /// Processo em segundo plano que monitora os eventos de inserção/remoção de

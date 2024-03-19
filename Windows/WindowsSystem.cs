@@ -7,11 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading;
 
-namespace Backup.Environment {
+namespace Backup.Windows {
 
 
     /// <summary>
@@ -25,25 +22,6 @@ namespace Backup.Environment {
 
 
         #region Windows drives management
-
-
-        /// <summary>
-        /// Tipo do drive.
-        /// </summary>
-        public enum DriveType {
-            /// <summary>
-            /// Drive interno ao computador.
-            /// </summary>
-            INTERNAL,
-            /// <summary>
-            /// Drive externo ao computador.
-            /// </summary>
-            EXTERNAL,
-            /// <summary>
-            /// Drive de rede.
-            /// </summary>
-            NETWORK
-        }
 
 
         /// <summary>
@@ -249,6 +227,25 @@ namespace Backup.Environment {
             psi.RedirectStandardOutput = false;
             psi.RedirectStandardInput = false;
             Process.Start(psi);
+        }
+
+
+        #endregion
+
+
+
+
+        #region Windows
+
+
+        public static void SetEnviromentVariable() {
+            var name = "Path";
+            var target = EnvironmentVariableTarget.Machine;
+            var oldValue = Environment.GetEnvironmentVariable(name, target);
+            if (oldValue == null) {
+                String newValue = String.Concat(oldValue, ";", Environment.SystemDirectory);
+                Environment.SetEnvironmentVariable(name, newValue, target);
+            }
         }
 
 

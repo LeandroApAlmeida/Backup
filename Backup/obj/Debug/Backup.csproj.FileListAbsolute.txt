@@ -18,6 +18,7 @@ D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Fo
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.ActionAfterBackupDialog.resources
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.BackupHistoryDialog.resources
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.ErrorLogDialog.resources
+D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.PowerOffTimeDialog.resources
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.SearchUpdatesDialog.resources
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.DirectoriesDialog.resources
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.DriveInfoDialog.resources
@@ -33,4 +34,3 @@ D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.ap
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.csproj.Up2Date
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.exe
 D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.pdb
-D:\2. SOFTWARE\1. PROJETOS PESSOAIS\BACKUP\src\Backup\Backup\obj\Debug\Backup.Forms.PoweroffTimeDialog.resources

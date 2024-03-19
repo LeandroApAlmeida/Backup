@@ -38,15 +38,7 @@ namespace Backup.Forms {
 
 
         private void rbShutdown_CheckedChanged(object sender, EventArgs e) {
-            if (rbShutdown.Checked) {
-                MessageBox.Show(
-                    this,
-                    "Salve todos os seus arquivos antes de realizar o backup.",
-                    "Atenção!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-            }
+            lblMessage.Visible = rbShutdown.Checked;
         }
 
 

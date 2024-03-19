@@ -26,11 +26,12 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.rbNone = new System.Windows.Forms.RadioButton();
             this.rbShutdown = new System.Windows.Forms.RadioButton();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(340, 102);
+            this.btnOk.Location = new System.Drawing.Point(349, 105);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(71, 23);
             this.btnOk.TabIndex = 0;
@@ -61,11 +62,23 @@
             this.rbShutdown.UseVisualStyleBackColor = true;
             this.rbShutdown.CheckedChanged += new System.EventHandler(this.rbShutdown_CheckedChanged);
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(141, 63);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(246, 13);
+            this.lblMessage.TabIndex = 4;
+            this.lblMessage.Text = "(Salve todos os seus arquivos antes de prosseguir)";
+            this.lblMessage.Visible = false;
+            // 
             // ActionAfterBackupDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 137);
+            this.ClientSize = new System.Drawing.Size(433, 140);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.rbShutdown);
             this.Controls.Add(this.rbNone);
             this.Controls.Add(this.btnOk);
@@ -74,7 +87,7 @@
             this.MinimizeBox = false;
             this.Name = "ActionAfterBackupDialog";
             this.ShowIcon = false;
-            this.Text = "AÇÃO APÓS O TÉRMINO DO BACKUP:";
+            this.Text = "AÇÃO APÓS O TÉRMINO DO BACKUP:/RESTORE";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,5 +98,6 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.RadioButton rbNone;
         private System.Windows.Forms.RadioButton rbShutdown;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

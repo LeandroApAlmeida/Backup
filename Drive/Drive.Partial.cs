@@ -1,5 +1,4 @@
-﻿using Backup.Utils;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -163,7 +162,7 @@ namespace Backup.Drive {
         /// <returns>Path do arquivo como se estivesse dentro da Unidade de Backup</returns>
         private string RelativePath(string path) {
             string parcialPath = path.Substring(3, path.Length - 3);
-            string targetDir = Letter + @"\backup\" + path[0] + @"\";
+            string targetDir = backupDirectory.FullName + @"\" + path[0] + @"\";
             return String.Concat(targetDir, parcialPath);
         }
 
@@ -225,7 +224,7 @@ namespace Backup.Drive {
         /// <returns>Hash do arquivo em formato Base64.</returns>
         private string GetFileHash(string path) {
             using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read)) {
-                using (System.Security.Cryptography.MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider()) {
+                using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider()) {
                     byte[] hash;
                     hash = md5.ComputeHash(stream);
                     return Encoding.Unicode.GetString(hash);
