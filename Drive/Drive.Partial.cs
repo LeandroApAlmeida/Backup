@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System;
 using System.Linq;
+using System.Security.Permissions;
 
 namespace Backup.Drive {
 
@@ -87,6 +88,26 @@ namespace Backup.Drive {
                 path,
                 FileAttributes.Normal
             );
+        }
+
+
+        private bool ReadingTheFileIsAllowed(string filePath) {
+            try {
+                File.Open(filePath, FileMode.Open, FileAccess.Read).Dispose();
+                return true;
+            } catch (IOException) {
+                return false;
+            }
+            /*var fileIOPermission = new FileIOPermission(
+                FileIOPermissionAccess.Read,
+                System.Security.AccessControl.AccessControlActions.View,
+                filePath
+            );
+            if (fileIOPermission.AllFiles == FileIOPermissionAccess.Read) {
+                return true;
+            } else {
+                return false;
+            }*/
         }
 
 

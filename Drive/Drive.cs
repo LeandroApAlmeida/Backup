@@ -447,7 +447,7 @@ namespace Backup.Drive {
                                     FileInfo targetInfo = new FileInfo(targetFile);
                                     if (UpdatedFile(fileInfo, targetInfo, mode)) {
                                         bytesToRecord += fileInfo.Length - targetInfo.Length;
-                                        updatedFilesList.AddLast(fileInfo); 
+                                        updatedFilesList.AddLast(fileInfo);
                                     }
                                 }
                             } catch (Exception ex) {
@@ -518,8 +518,8 @@ namespace Backup.Drive {
                             foreach (ISearchBackupUpdatesListener listener in listeners) {
                                 listener.ProcessingFile(currentStep, file);
                             } 
-                            string localFile = RelativePath(localDirectory, file);
                             try {
+                                string localFile = RelativePath(localDirectory, file);
                                 if (!File.Exists(localFile)) {
                                     // Arquivo na raiz do subdiretório de destino e sem equivalente
                                     // no subdiretório local.

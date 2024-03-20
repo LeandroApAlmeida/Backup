@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="53248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="53760">
       <assemblyIdentity name="Drive" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CTxvyMN1mMd1Lni4ybFyBMl1yLyPbut8j8xqFxFjvbw=</dsig:DigestValue>
+        <dsig:DigestValue>2umrEMKnPO8FdKPWUeHNJQ/WDDWtguJ3kR/+nkbaEzA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
