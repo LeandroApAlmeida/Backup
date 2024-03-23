@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Backup.exe" size="187832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Backup.exe" size="197560">
       <assemblyIdentity name="Backup" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pWGu1al6nUhj8yIIiuty4eTRNAJN5WM6JA3VfOF2kjE=</dsig:DigestValue>
+        <dsig:DigestValue>GpVpPbSmYzPrsaM1Oszx9f9SUcyiZwmvnWLbkgajj/0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="53760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="55296">
       <assemblyIdentity name="Drive" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2umrEMKnPO8FdKPWUeHNJQ/WDDWtguJ3kR/+nkbaEzA=</dsig:DigestValue>
+        <dsig:DigestValue>gPIlJwqFbZqh/Vhqko/mS7TefCxlDDXZw1VLpgd9QJc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,13 +90,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Backup.exe.config" size="2420">
+  <file name="Backup.exe.config" size="2720">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MeQfiTPhen0ylo2IDtOPdQjTAndFD5jBPntubGoIzYE=</dsig:DigestValue>
+      <dsig:DigestValue>EfYzrYw3bS0hoP1sqgRmq0g3YSwy986ftJloSx1KDpg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="BackupDrive.ico" size="16446">

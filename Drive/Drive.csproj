@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AutorunFile.cs" />
     <Compile Include="BackupLogFile.cs" />
+    <Compile Include="DamageInfo.cs" />
     <Compile Include="DirectoriesFile.cs" />
     <Compile Include="Drive.cs" />
     <Compile Include="Drive.Partial.cs" />

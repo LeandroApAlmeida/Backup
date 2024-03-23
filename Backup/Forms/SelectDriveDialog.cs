@@ -43,10 +43,21 @@ namespace Backup.Forms {
         /// </summary>
         private void UpdateDrivesList() {
             try {
-                ltvDrives.Items.Clear();
+                if (SafeRestore.IsPendingRestore) {
+                    if (SafeRestore.SourceDriveId != drive.UID) {
+                        ltvDrives.Enabled = false;
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("Conecte a Unidade de Backup com o Identificador ");
+                        sb.Append(SafeRestore.SourceDriveId);
+                        sb.Append(" para concluir a restauração pendente.");
+                        throw new Exception(sb.ToString());
+                    }
+                    ltvDrives.Enabled = false;
+                }
                 internalDrives = drivesManager.InternalDrives;
                 List<ListViewItem> listViewItems = new List<ListViewItem>();
                 List<string> destinationDrives = this.drive.DestinationDrives;
+                List<string> targetRestoreDrives =  SafeRestore.TargetDrives;
                 bool insertDrive;
                 for (int i = 0; i < internalDrives.Count; i++) {
                     insertDrive = false;
@@ -67,28 +78,16 @@ namespace Backup.Forms {
                             },
                             0
                         );
+                        foreach (string targetRestoreDrive in targetRestoreDrives) {
+                            if (targetRestoreDrive.Equals(drive.Letter)) {
+                                item.Checked = true;
+                                break;
+                            }
+                        }
                         listViewItems.Add(item);
                     }
                 }
                 ltvDrives.Items.AddRange(listViewItems.ToArray());
-                if (SafeRestore.IsPendingRestore) {
-                    if (SafeRestore.SourceDriveId != drive.UID) {
-                        ltvDrives.Enabled = false;
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("Conecte a Unidade de Backup com o Identificador ");
-                        sb.Append(SafeRestore.SourceDriveId);
-                        sb.Append(" para concluir a restauração pendente.");
-                        throw new Exception(sb.ToString());
-                    }
-                    List<string> targetRestoreDrives = SafeRestore.TargetDrives;
-                    for (int i = 0; i < internalDrives.Count; i++) {
-                        Drive.Drive drive = internalDrives[i];
-                        if (drive.Letter.Equals(SafeRestore.TargetDrives)) {
-                            ltvDrives.Items[i].Checked = true;
-                        }
-                    }
-                    ltvDrives.Enabled = false;
-                }
             } catch (Exception ex) {
                 MessageBox.Show(
                     this,

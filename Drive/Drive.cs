@@ -114,7 +114,7 @@ namespace Backup.Drive {
         private readonly LinkedList<FileInfo> updatedFilesList;
 
         // Lista dos arquivos locais com erro de acesso ou outro problema.
-        private readonly LinkedList<String> damagedFilesList;
+        private readonly LinkedList<DamageInfo> damagedFilesList;
 
         // Lista dos diretórios locais a serem criados na Unidade de Backup.
         private readonly LinkedList<string> createdDirectoriesList;
@@ -128,8 +128,10 @@ namespace Backup.Drive {
         // Entradas de Log em formato texto codificado.
         private readonly LinkedList<string> logEntriesList;
 
-        // 
+        // Lista de arquivos a serem restaurados.
         private readonly LinkedList<RestoreFiles> restoreFilesList;
+
+        private List<Drive> targetDrivesList;
 
         // Tipo do drive. Os tipos são: INTERNO, EXTERNO E REDE.
         private readonly DriveType driveType;
@@ -191,12 +193,13 @@ namespace Backup.Drive {
             createdFilesList = new LinkedList<FileInfo>();
             deletedFilesList = new LinkedList<FileInfo>();
             updatedFilesList = new LinkedList<FileInfo>();
-            damagedFilesList = new LinkedList<String>();
+            damagedFilesList = new LinkedList<DamageInfo>();
             createdDirectoriesList = new LinkedList<string>();
             deletedDirectoriesList = new LinkedList<string>();
             rootDirectoriesList = new LinkedList<string>();
             logEntriesList = new LinkedList<string>();
             restoreFilesList = new LinkedList<RestoreFiles>();
+            targetDrivesList = new List<Drive>();
             // Arquivos da instalação da Unidade de Backup.
             installationDirectory = new InstallationDirectory(driveInfo.Name + ".BackupDriveInstallation");
             directoriesFile = new DirectoriesFile(installationDirectory.Path + @"\BackupDirectories.xml");
@@ -415,7 +418,7 @@ namespace Backup.Drive {
                                 }
                             }
                         } catch (Exception ex) {
-                            damagedFilesList.AddLast(file);
+                            damagedFilesList.AddLast(new DamageInfo(file, ex.Message));
                         } finally {
                             currentStep++;
                         }
@@ -451,7 +454,7 @@ namespace Backup.Drive {
                                     }
                                 }
                             } catch (Exception ex) {
-                                damagedFilesList.AddLast(file);
+                                damagedFilesList.AddLast(new DamageInfo(file, ex.Message));
                             } finally {
                                 currentStep++;
                             }
@@ -500,7 +503,7 @@ namespace Backup.Drive {
                                 deletedFilesList.AddLast(fileInfo);
                             }
                         } catch (Exception ex) {
-                            damagedFilesList.AddLast(file);
+                            damagedFilesList.AddLast(new DamageInfo(file, ex.Message));
                         } finally {
                             currentStep++;
                         }
@@ -528,7 +531,7 @@ namespace Backup.Drive {
                                     deletedFilesList.AddLast(fileInfo);
                                 }
                             } catch (Exception ex) {
-                                damagedFilesList.AddLast(file);
+                                damagedFilesList.AddLast(new DamageInfo(file, ex.Message));
                             } finally {
                                 currentStep++;
                             }
@@ -636,8 +639,8 @@ namespace Backup.Drive {
                             }
                             DeleteFile(fileInfo.FullName);
                             InsertLogEntry(3, fileInfo, fileInfo.FullName);
-                        } catch (Exception e) {
-                            damagedFilesList.AddLast(fileInfo.FullName);
+                        } catch (Exception ex) {
+                            damagedFilesList.AddLast(new DamageInfo(fileInfo.FullName, ex.Message));
                         } finally {
                             currentStep++;
                         }
@@ -672,8 +675,8 @@ namespace Backup.Drive {
                             }
                             CopyFile(fileInfo.FullName, targetFile);
                             InsertLogEntry(1, fileInfo, targetFile);
-                        } catch (Exception e) {
-                            damagedFilesList.AddLast(fileInfo.FullName);
+                        } catch (Exception ex) {
+                            damagedFilesList.AddLast(new DamageInfo(fileInfo.FullName, ex.Message));
                         } finally {
                             currentStep++;
                         }
@@ -689,8 +692,8 @@ namespace Backup.Drive {
                             }
                             CopyFile(fileInfo.FullName, targetFile);
                             InsertLogEntry(2, fileInfo, targetFile);
-                        } catch (Exception e) {
-                            damagedFilesList.AddLast(fileInfo.FullName);
+                        } catch (Exception ex) {
+                            damagedFilesList.AddLast(new DamageInfo(fileInfo.FullName, ex.Message));
                         } finally {
                             currentStep++;
                         }
@@ -770,6 +773,7 @@ namespace Backup.Drive {
             try {
                 CheckPermission(true, false, true);
                 ReleaseCounters();
+                this.targetDrivesList.AddRange(targetDrivesList);
                 int totalFiles = 0;
                 foreach (Drive drive in targetDrivesList) {
                     totalFiles += CountFiles(String.Concat(backupDirectory.FullName,
@@ -806,7 +810,7 @@ namespace Backup.Drive {
                                 restoreFiles.Files.AddLast(sourceInfo);
                             }
                         } catch (Exception ex) {
-                            damagedFilesList.AddLast(backupFile);
+                            damagedFilesList.AddLast(new DamageInfo(backupFile, ex.Message));
                         } finally {
                             currentStep++;
                         }
@@ -835,7 +839,7 @@ namespace Backup.Drive {
                                     restoreFiles.Files.AddLast(sourceInfo);
                                 }
                             } catch (Exception ex) {
-                                damagedFilesList.AddLast(backupFile);
+                                damagedFilesList.AddLast(new DamageInfo(backupFile, ex.Message));
                             } finally {
                                 currentStep++;
                             }
@@ -870,11 +874,11 @@ namespace Backup.Drive {
         /// </summary>
         /// <param name="targetDrivesList">Drive local aonde serão restaurados os arquivos.</param>
         /// <param name="listeners">Ouvintes do processo de restore.</param>
-        public void PerformRestoreAsynk(List<Drive> targetDrivesList, params IRestoreListener[] listeners) {
+        public void PerformRestoreAsynk(params IRestoreListener[] listeners) {
             lock (this) {
                 if (!isProcessing) {
                     Thread thread = new Thread(() => {
-                        PerformRestore(targetDrivesList, listeners);
+                        PerformRestore(listeners);
                     });
                     thread.IsBackground = true;
                     thread.Start();
@@ -890,9 +894,77 @@ namespace Backup.Drive {
         /// </summary>
         /// <param name="targetDrivesList">Drive local de destino.</param>
         /// <param name="listeners">Ouvintes do processo de restore.</param>
-        private void PerformRestore(List<Drive> targetDrivesList, params IRestoreListener[] listeners) {
+        private void PerformRestore(params IRestoreListener[] listeners) {
             isProcessing = true;
             abortedProcess = false;
+            try {
+                CheckPermission(true, false, true);
+                bool copyFiles = !abortedProcess && (restoreFilesList.Count > 0);
+                if (copyFiles) {
+                    logEntriesList.Clear();
+                    damagedFilesList.Clear();
+                    if (driveInfo.TotalFreeSpace <= (bytesToRecord - bytesToRelease)) {
+                        throw new Exception("Espaço em disco insuficiente para " +
+                        "realizar o backup dos arquivos.");
+                    }
+                    SafeRestore.RestoreStarted(this, targetDrivesList);
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreInitialized(restoreFilesList.Count);
+                    }
+                    int currentStep = 1;
+                    foreach (RestoreFiles restoreFiles in restoreFilesList) {
+                        foreach (FileInfo file in restoreFiles.Files) {
+                            foreach (IRestoreListener listener in listeners) {
+                                listener.ProcessingFile(currentStep, file.FullName);
+                            }
+                            try {
+                                string directory = RelativePath(
+                                    restoreFiles.TargetDrive + @"\",
+                                    file.DirectoryName
+                                );
+                                if (!Directory.Exists(directory)) {
+                                    Directory.CreateDirectory(directory);
+                                }
+                                string targetFile = RelativePath(directory, file.FullName);
+                                CopyFile(file.FullName, targetFile);
+                            } catch (Exception ex) {
+                                damagedFilesList.AddLast(new DamageInfo(file.FullName, ex.Message));
+                            } finally {
+                                currentStep++;
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                // Tratamento de exceção no processo de backup.
+                if (!abortedProcess) {
+                    // Houve um erro e não foi gerado por motivo de cancelamento do 
+                    // processo pelo usuário.
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreAbortedByError(ex);
+                    }
+                } else {
+                    // Houve um erro, mas ele foi gerado porque o usuário cancelou
+                    // o processo.
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreAbortedByUser();
+                    }
+                }
+            } finally {
+                try {
+                    isProcessing = false;
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreDone(damagedFilesList);
+                    }
+                } catch (Exception ex) {
+                    isProcessing = false;
+                    foreach (IRestoreListener listener in listeners) {
+                        listener.RestoreAbortedByError(ex);
+                    }
+                }
+            }
+
+
             /*
             try {
                 // A Unidade de Backup deve estar bloqueada.
@@ -1127,6 +1199,7 @@ namespace Backup.Drive {
             updatedFilesList.Clear();
             damagedFilesList.Clear();
             restoreFilesList.Clear();
+            targetDrivesList.Clear();
         }
 
 

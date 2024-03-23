@@ -45,7 +45,11 @@ namespace Backup.Forms {
         // Status de processamento abortado.
         private bool proccessAborted;
 
+        // Ação após a realização do backup.
         private int actionAfterBackupCode ;
+
+        // Modo de backup/restore.
+        private bool backupMode;
 
 
         /// <summary>
@@ -272,6 +276,7 @@ namespace Backup.Forms {
                 romUninstall.Enabled = false;
                 romDirectories.Enabled = false;
                 tsslFileName.Visible = true;
+                tsslFileName.Text = "";
                 rboClose.Enabled = false;
             } else {
                 rbbSelectRestoreDrive.Enabled = true;
@@ -281,6 +286,7 @@ namespace Backup.Forms {
                 romUninstall.Enabled = true;
                 romDirectories.Enabled = true;
                 tsslFileName.Visible = false;
+                tsslFileName.Text = "";
                 rboClose.Enabled = true;
                 int numFiles = ltvFiles.Items.Count;
                 if (numFiles > 0) {
@@ -295,26 +301,66 @@ namespace Backup.Forms {
 
 
         private void SetBackupViewMode() {
-            ltvFiles.Items.Clear();
-            rbtModeBackup.Checked = true;
-            rbtBackup.Visible = true;
-            rbtRestore.Visible = false;
-            ribbon.ActiveTab = ribbon.Tabs[0];
-            if (selectedDrive != null) {
-                if (selectedDrive.SourceDirectories.Count > 0) {
-                    SearchBackupUpdates();
+            if (!backupMode) {
+                bool changeMode = true;
+                if (processingBackup) {
+                    DialogResult dr = MessageBox.Show(
+                        "Um processo está em andamento. Ir para o modo de backup mesmo assim?",
+                        "Atenção!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Error
+                    );
+                    if (dr == DialogResult.Yes) {
+                        CancelProccess();
+                    } else {
+                        changeMode = false;
+                    }
+                }
+                if (changeMode) {
+                    backupMode = true;
+                    ltvFiles.Items.Clear();
+                    rbtBackup.Visible = true;
+                    rbtRestore.Visible = false;
+                    ribbon.ActiveTab = ribbon.Tabs[0];
+                    if (selectedDrive != null) {
+                        if (selectedDrive.SourceDirectories.Count > 0) {
+                            SearchBackupUpdates();
+                        }
+                    }
                 }
             }
+            rbtModeRestore.Checked = !backupMode;
+            rbtModeBackup.Checked = backupMode;
         }
 
 
         private void SetRestoreViewMode() {
-            ltvFiles.Items.Clear();
-            rbtModeRestore.Checked = true;
-            rbtBackup.Visible = false;
-            rbtRestore.Visible = true;
-            ribbon.ActiveTab = ribbon.Tabs[1];
-            SetProcessingRestoreMode(false);
+            if (backupMode) {
+                bool changeMode = true;
+                if (processingBackup) {
+                    DialogResult dr = MessageBox.Show(
+                        "Um processo está em andamento. Ir para o modo de restore mesmo assim?",
+                        "Atenção!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Error
+                    );
+                    if (dr == DialogResult.Yes) {
+                        CancelProccess();
+                    } else {
+                        changeMode = false;
+                    }
+                }
+                if (changeMode) {
+                    backupMode = false;
+                    ltvFiles.Items.Clear();
+                    rbtBackup.Visible = false;
+                    rbtRestore.Visible = true;
+                    ribbon.ActiveTab = ribbon.Tabs[1];
+                    SetProcessingRestoreMode(false);
+                }
+            }
+            rbtModeRestore.Checked = !backupMode;
+            rbtModeBackup.Checked = backupMode;
         }
 
 
@@ -623,12 +669,12 @@ namespace Backup.Forms {
         /// Iniciar o processo de restore.
         /// </summary>
         /// <param name="targetDrivesList">Drive local para restauração dos arquivos.</param>
-        private void DoRestore(List<Drive.Drive> targetDrivesList) {
+        private void DoRestore() {
             processingBackup = true;
             proccessAborted = false;
             lblProccessStatus.Visible = true;
             SetProcessingBackupMode(true);
-            selectedDrive.PerformRestoreAsynk(targetDrivesList, this);
+            selectedDrive.PerformRestoreAsynk(this);
         }
 
 
@@ -637,6 +683,8 @@ namespace Backup.Forms {
         /// </summary>
         private void CancelProccess() {
             if (selectedDrive != null) {
+                processingBackup = false;
+                proccessAborted = true;
                 tslStatus.Text = "    CANCELANDO O PROCESSO: ";
                 rbbCancelBackup.Enabled = false;
                 lblProccessStatus.Visible = false;
@@ -679,7 +727,7 @@ namespace Backup.Forms {
 
 
         void ISearchBackupUpdatesListener.SearchFinished(LinkedList<FileInfo> createdFilesList,
-        LinkedList<FileInfo> deletedFilesList, LinkedList<FileInfo> updatedFilesList, LinkedList<String> errorFilesList) {
+        LinkedList<FileInfo> deletedFilesList, LinkedList<FileInfo> updatedFilesList, LinkedList<DamageInfo> errorFilesList) {
             Invoke((MethodInvoker) delegate () {
                 try {
                     ltvFiles.Groups.Clear();
@@ -822,6 +870,7 @@ namespace Backup.Forms {
         void IBackupListener.BackupInitialized(int numberOfFiles) {
             Invoke((MethodInvoker)delegate () {
                 tsslFileName.Visible = true;
+                tsslFileName.Text = "";
                 tslStatus.Visible = true;
                 tslStatus.Text = "    COPIANDO: ";
                 pgbFiles.Visible = true;
@@ -887,7 +936,7 @@ namespace Backup.Forms {
         }
 
 
-        void IBackupListener.BackupDone(LinkedList<String> errorFilesList) {
+        void IBackupListener.BackupDone(LinkedList<DamageInfo> errorFilesList) {
             Invoke((MethodInvoker)delegate () {
                 pgbFiles.Visible = false;
                 tslStatus.Visible = false;
@@ -943,7 +992,7 @@ namespace Backup.Forms {
 
 
         void ISearchRestoreFilesListener.SearchFinished(LinkedList<RestoreFiles> restoreFilesList,
-        LinkedList<string> errorFilesList) {
+        LinkedList<DamageInfo> errorFilesList) {
             Invoke((MethodInvoker)delegate () {
                 try {
                     pgbFiles.Visible = false;
@@ -1060,8 +1109,8 @@ namespace Backup.Forms {
                     int index = 0;
                     foreach (FileInfo fileInfo in restoreFiles) {
                         Dictionary<string, object> info = GetExtensionInfo(fileInfo);
-                        int iconIndex = (int)info["icon_index"];
-                        string description = (string)info["description"];
+                        int iconIndex = (int) info["icon_index"];
+                        string description = (string) info["description"];
                         ListViewItem item = new ListViewItem(
                             new string[] {
                                 fileInfo.FullName,
@@ -1096,6 +1145,7 @@ namespace Backup.Forms {
         void IRestoreListener.RestoreInitialized(int numberOfFiles) {
             Invoke((MethodInvoker)delegate () {
                 tsslFileName.Visible = true;
+                tsslFileName.Text = "";
                 tslStatus.Visible = true;
                 tslStatus.Text = "    RESTAURANDO: ";
                 pgbFiles.Visible = true;
@@ -1138,13 +1188,13 @@ namespace Backup.Forms {
         }
 
 
-        void IRestoreListener.RestoreDone(LinkedList<String> errorFilesList) {
+        void IRestoreListener.RestoreDone(LinkedList<DamageInfo> errorFilesList) {
             Invoke((MethodInvoker)delegate () {
                 pgbFiles.Visible = false;
                 tslStatus.Visible = false;
                 pgbFiles.Minimum = 0;
                 pgbFiles.Maximum = 0;
-                rbpCancelBackup.Visible = false;
+                rbpCancelRestore.Visible = false;
                 tsslFileName.Visible = false;
                 if (!proccessAborted) {
                     ltvFiles.Items.Clear();
@@ -1387,7 +1437,7 @@ namespace Backup.Forms {
 
 
         private void rbbRunRestore_Click(object sender, EventArgs e) {
-            SetProcessingRestoreMode(true);
+            DoRestore();
         }
 
 

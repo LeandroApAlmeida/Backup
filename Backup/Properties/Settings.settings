@@ -35,5 +35,11 @@
     <Setting Name="SearchUpdatesMode" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="ErrorLogDialog_ListView_Column_1_Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="ErrorLogDialog_ListView_Column_2_Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

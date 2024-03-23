@@ -36,7 +36,7 @@ namespace Backup.Drive {
         /// <summary>
         /// Evento de backup concluído com sucesso.
         /// </summary>
-        void BackupDone(LinkedList<String> errorFilesList);
+        void BackupDone(LinkedList<DamageInfo> errorFilesList);
 
     }
 

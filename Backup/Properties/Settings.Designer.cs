@@ -154,5 +154,29 @@ namespace Backup.Properties {
                 this["SearchUpdatesMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int ErrorLogDialog_ListView_Column_1_Width {
+            get {
+                return ((int)(this["ErrorLogDialog_ListView_Column_1_Width"]));
+            }
+            set {
+                this["ErrorLogDialog_ListView_Column_1_Width"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int ErrorLogDialog_ListView_Column_2_Width {
+            get {
+                return ((int)(this["ErrorLogDialog_ListView_Column_2_Width"]));
+            }
+            set {
+                this["ErrorLogDialog_ListView_Column_2_Width"] = value;
+            }
+        }
     }
 }

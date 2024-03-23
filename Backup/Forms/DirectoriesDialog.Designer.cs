@@ -75,7 +75,6 @@
             this.btnInsert.Text = "Inserir";
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click_1);
             this.btnInsert.MouseEnter += new System.EventHandler(this.btnInsert_MouseEnter);
-            this.btnInsert.MouseLeave += new System.EventHandler(this.btnInsert_MouseLeave);
             // 
             // toolStripSeparator1
             // 
@@ -92,7 +91,6 @@
             this.btnDelete.Text = "Remover";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.MouseEnter += new System.EventHandler(this.btnDelete_MouseEnter);
-            this.btnDelete.MouseLeave += new System.EventHandler(this.btnDelete_MouseLeave);
             // 
             // statusStrip1
             // 

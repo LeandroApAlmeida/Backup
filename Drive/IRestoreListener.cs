@@ -42,7 +42,7 @@ namespace Backup.Drive {
         /// <summary>
         /// Evento de restauração concluída com sucesso.
         /// </summary>
-        void RestoreDone(LinkedList<String> errorFilesList);
+        void RestoreDone(LinkedList<DamageInfo> errorFilesList);
 
     }
 

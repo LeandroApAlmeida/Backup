@@ -400,9 +400,7 @@
             // 
             // rbpCancelRestore
             // 
-            this.rbpCancelRestore.ButtonMoreEnabled = false;
             this.rbpCancelRestore.ButtonMoreVisible = false;
-            this.rbpCancelRestore.FlowsTo = System.Windows.Forms.RibbonPanelFlowDirection.Left;
             this.rbpCancelRestore.Items.Add(this.rbbCancelRestore);
             this.rbpCancelRestore.Name = "rbpCancelRestore";
             this.rbpCancelRestore.Text = "Cancelar";
@@ -543,7 +541,9 @@
             listViewGroup1,
             listViewGroup2,
             listViewGroup3});
+            this.ltvFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.ltvFiles.HideSelection = false;
+            this.ltvFiles.LabelWrap = false;
             this.ltvFiles.LargeImageList = this.imlFiles;
             this.ltvFiles.Location = new System.Drawing.Point(0, 106);
             this.ltvFiles.MultiSelect = false;
@@ -581,12 +581,13 @@
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiOpenFile,
             this.toolStripSeparator1,
             this.tsmiOpenFolder});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(220, 82);
+            this.contextMenuStrip.Size = new System.Drawing.Size(220, 104);
             // 
             // tsmiOpenFile
             // 

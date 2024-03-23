@@ -43,26 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Backup.exe" size="161720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Backup.exe" size="192440">
       <assemblyIdentity name="Backup" version="1.2.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>puXEBjP6iFfIGt5hOlZ5aUdAMGoJM0zQ2ZQnjrLdCU0=</dsig:DigestValue>
+        <dsig:DigestValue>Lyp+HwGcv8aUpmWbxnBPhmGKlOoeDQe/QB3f+76BWoY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="48128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="50176">
       <assemblyIdentity name="Drive" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ErNouhi3cWd+shNtYjHCKC7acu+ff637iNCzOYcvvaI=</dsig:DigestValue>
+        <dsig:DigestValue>mM8oM1Z1Df86afxdzAnE4aBgHlEK2Pp4p06AVXd0qSQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Environment.dll" size="11264">
+      <assemblyIdentity name="Environment" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>0iubcGu64xysJ+Etp6OtYfs0njIdIZledV+RNh7quPE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,25 +90,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Windows.dll" size="11264">
-      <assemblyIdentity name="Windows" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4ccwd5t/DzctjN9dGtKgLrfnT5EKT+nMh0AHdDXFfUw=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <file name="Backup.exe.config" size="2420">
+  <file name="Backup.exe.config" size="2720">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MeQfiTPhen0ylo2IDtOPdQjTAndFD5jBPntubGoIzYE=</dsig:DigestValue>
+      <dsig:DigestValue>EfYzrYw3bS0hoP1sqgRmq0g3YSwy986ftJloSx1KDpg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="BackupDrive.ico" size="16446">

@@ -16,8 +16,6 @@ namespace Backup.Forms {
     internal partial class DirectoriesDialog : Form {
 
 
-        private const String defaultText = "Opcional: Arraste o(s) diretório(s) do Windows Explorer e solte na lista.";
-
         // Unidade de Backup selecionada na tela principal.
         private readonly Drive.Drive drive;
 
@@ -30,7 +28,6 @@ namespace Backup.Forms {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterParent;
             this.drive = drive;
-            tslHint.Text = defaultText;
             UpdateDirectories();
         }
 
@@ -142,18 +139,8 @@ namespace Backup.Forms {
         }
 
 
-        private void btnInsert_MouseLeave(object sender, EventArgs e) {
-            tslHint.Text = defaultText;
-        }
-
-
         private void btnDelete_MouseEnter(object sender, EventArgs e) {
             tslHint.Text = "Remover os diretórios selecionados";
-        }
-
-
-        private void btnDelete_MouseLeave(object sender, EventArgs e) {
-            tslHint.Text = defaultText;
         }
 
 

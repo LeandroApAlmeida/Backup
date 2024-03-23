@@ -33,11 +33,16 @@ namespace Backup.Drive {
             restoreFile = new RestoreFile(AppDomain.CurrentDomain.BaseDirectory + @"\restore-info.xml");
             if (restoreFile.Exists()) {
                 Dictionary<string, object> dictionary = restoreFile.Read();
-                sourceId = (string) dictionary["source-drive-id"];
+                sourceId = (string)dictionary["source-drive-id"];
                 string drives = (string)dictionary["target-drive-id"];
                 string[] drivesList = drives.Split(',');
                 targetIdList = new List<string>(drivesList.Length);
-                restoreTime = (DateTime) dictionary["restore-time"];
+                foreach (string drive in drivesList) {
+                    targetIdList.Add(drive);
+                }
+                restoreTime = (DateTime)dictionary["restore-time"];
+            } else {
+                targetIdList = new List<string>();
             }
         }
 
