@@ -129,7 +129,7 @@ namespace Backup.Drive {
         private readonly LinkedList<string> logEntriesList;
 
         // Lista de arquivos a serem restaurados.
-        private readonly LinkedList<RestoreFiles> restoreFilesList;
+        private readonly LinkedList<DriveFiles> restoreFilesList;
 
         private List<Drive> targetDrivesList;
 
@@ -198,7 +198,7 @@ namespace Backup.Drive {
             deletedDirectoriesList = new LinkedList<string>();
             rootDirectoriesList = new LinkedList<string>();
             logEntriesList = new LinkedList<string>();
-            restoreFilesList = new LinkedList<RestoreFiles>();
+            restoreFilesList = new LinkedList<DriveFiles>();
             targetDrivesList = new List<Drive>();
             // Arquivos da instalação da Unidade de Backup.
             installationDirectory = new InstallationDirectory(driveInfo.Name + ".BackupDriveInstallation");
@@ -333,6 +333,11 @@ namespace Backup.Drive {
                     label
                 );
             }
+        }
+
+
+        public bool Eject() {
+            return WindowsSystem.Eject(Letter);
         }
 
 
@@ -787,7 +792,7 @@ namespace Backup.Drive {
                 int currentStep = 1;
                 foreach (Drive drive in targetDrivesList) {
                     CheckIfTheProcessHasBeenAborted();
-                    RestoreFiles restoreFiles = new RestoreFiles(drive.Letter);
+                    DriveFiles restoreFiles = new DriveFiles(drive.Letter);
                     LinkedList<string> subdirectories = new LinkedList<string>();
                     string directory = String.Concat(backupDirectory.FullName, @"\", drive.Letter[0]);
                     backupFiles = Directory.GetFiles(directory + @"\");
@@ -901,19 +906,39 @@ namespace Backup.Drive {
                 CheckPermission(true, false, true);
                 bool copyFiles = !abortedProcess && (restoreFilesList.Count > 0);
                 if (copyFiles) {
-                    logEntriesList.Clear();
                     damagedFilesList.Clear();
-                    if (driveInfo.TotalFreeSpace <= (bytesToRecord - bytesToRelease)) {
-                        throw new Exception("Espaço em disco insuficiente para " +
-                        "realizar o backup dos arquivos.");
+                    LinkedList<string> directoriesList = new LinkedList<string>();
+                    foreach (Drive drive in targetDrivesList ) {
+                        CheckIfTheProcessHasBeenAborted();
+                        string directory = RelativePath(drive.Letter + @"\");
+                        ListSubdirectoriesTree(directory, directoriesList);
                     }
+                    int replaceIndex = backupDirectory.FullName.Length;
+                    foreach (string directory in directoriesList) {
+                        CheckIfTheProcessHasBeenAborted();
+                        string targetDrive = directory.Substring(replaceIndex + 1, 1);
+                        string targetDirPath = targetDrive + @":\" + directory.Substring(
+                            replaceIndex + 3,
+                            directory.Length - replaceIndex - 3
+                        );
+                        if (!Directory.Exists(targetDirPath)) {
+                            Directory.CreateDirectory(targetDirPath);
+                        }
+                    }
+                    CheckIfTheProcessHasBeenAborted();
                     SafeRestore.RestoreStarted(this, targetDrivesList);
+                    int numOfRestoreFiles = 0;
+                    foreach (DriveFiles driveFiles in restoreFilesList ) {
+                        numOfRestoreFiles += driveFiles.Files.Count;
+                    }
                     foreach (IRestoreListener listener in listeners) {
-                        listener.RestoreInitialized(restoreFilesList.Count);
+                        listener.RestoreInitialized(numOfRestoreFiles);
                     }
                     int currentStep = 1;
-                    foreach (RestoreFiles restoreFiles in restoreFilesList) {
+                    foreach (DriveFiles restoreFiles in restoreFilesList) {
+                        CheckIfTheProcessHasBeenAborted();
                         foreach (FileInfo file in restoreFiles.Files) {
+                            CheckIfTheProcessHasBeenAborted();
                             foreach (IRestoreListener listener in listeners) {
                                 listener.ProcessingFile(currentStep, file.FullName);
                             }
@@ -922,9 +947,6 @@ namespace Backup.Drive {
                                     restoreFiles.TargetDrive + @"\",
                                     file.DirectoryName
                                 );
-                                if (!Directory.Exists(directory)) {
-                                    Directory.CreateDirectory(directory);
-                                }
                                 string targetFile = RelativePath(directory, file.FullName);
                                 CopyFile(file.FullName, targetFile);
                             } catch (Exception ex) {
@@ -934,6 +956,8 @@ namespace Backup.Drive {
                             }
                         }
                     }
+                    // Exclui o arquivo de controle de restauração.
+                    SafeRestore.RestoreDone();
                 }
             } catch (Exception ex) {
                 // Tratamento de exceção no processo de backup.
@@ -963,110 +987,6 @@ namespace Backup.Drive {
                     }
                 }
             }
-
-
-            /*
-            try {
-                // A Unidade de Backup deve estar bloqueada.
-                if (!isLocked) {
-                    throw new Exception("Precisa obter o bloqueio da Unidade de Backup.");
-                }
-                // Cria o arquivo para indicar que uma restauração foi iniciada.
-                // Este arquivo controla para que o restore seja concluído antes
-                // que se possa realizar qualuer ação no Unidade de backup.
-                SafeRestore.RestoreStarted(this, targetDrivesList);
-                List<string> directoriesTree = new List<string>();
-                LinkedList<FileInfo> restoreFiles = new LinkedList<FileInfo>();
-                foreach (string directory in backupDirectoriesList) {
-                    CheckIfTheProcessHasBeenAborted();
-                    string backupDirectory = RelativePath(directory);
-                    directoriesTree.Add(backupDirectory);
-                    LinkedList<string> subdirectories = new LinkedList<string>();
-                    ListSubdirectoriesTree(backupDirectory, subdirectories);
-                    foreach (string subdirectory in subdirectories) {
-                        directoriesTree.Add(subdirectory);
-                    }
-                }
-                // Lista todos os arquivos na Unidade de Backup que estão pendentes
-                // de recuperação. Como é possível interromper a operação de recuperação,
-                // neste método lista somente os arquivos que ainda não foram copiados.
-                foreach (string directory in directoriesTree) {
-                    CheckIfTheProcessHasBeenAborted();
-                    if (Directory.Exists(directory)) {
-                        string[] files = Directory.GetFiles(directory);
-                        if (files.Length > 0) {
-                            foreach (string file in files) {
-                                CheckIfTheProcessHasBeenAborted();
-                                string targetFile = RelativePath(
-                                    targetDrivesList.RootDirectory,
-                                    file
-                                );
-                                if (!File.Exists(targetFile)) {
-                                    restoreFiles.AddLast(new FileInfo(file));
-                                }
-                            }
-                        }
-                    }
-                }
-                // Notifica os ouvintes do processo de restauração para listar os 
-                // arquivos pendentes de recuperação.
-                foreach (IRestoreListener listener in listeners) {
-                    listener.ListRestoreFiles(restoreFiles);
-                }
-                // Cria a hierarquia de diretórios.
-                foreach (string directory in directoriesTree) {
-                    CheckIfTheProcessHasBeenAborted();
-                    if (Directory.Exists(directory)) {
-                        string targetDirectory = RelativePath(
-                            targetDrivesList.RootDirectory,
-                            directory
-                        );
-                        if (!Directory.Exists(targetDirectory)) {
-                            CreateDirectory(targetDirectory);
-                        }
-                    }
-                }
-                foreach (IRestoreListener listener in listeners) {
-                    listener.RestoreInitialized(restoreFiles.Count);
-                }
-                // Copia os arquivos da Unidade de Backup para o drive de destino.
-                int currentStep = 1;
-                foreach (FileInfo file in restoreFiles) {
-                    CheckIfTheProcessHasBeenAborted();
-                    try {
-                        string targetFile = RelativePath (
-                            targetDrivesList.RootDirectory,
-                            file.FullName
-                        );
-                        CopyFile(file.FullName, targetFile);
-                        foreach (IRestoreListener listener in listeners) {
-                            listener.ProcessingFile(currentStep, file.FullName);
-                        }
-                    } catch (Exception ex) {
-                        damagedFilesList.AddLast(file.FullName);
-                    } finally {
-                        currentStep++;
-                    }
-                }
-                // Exclui o arquivo de controle de restauração.
-                SafeRestore.RestoreDone();
-            } catch (Exception ex) {
-                if (!abortedProcess) {
-                    foreach (IRestoreListener listener in listeners) {
-                        listener.RestoreAbortedByError(ex);
-                    }
-                } else {
-                    foreach (IRestoreListener listener in listeners) {
-                        listener.RestoreAbortedByUser();
-                    }
-                }
-            } finally {
-                isProcessing = false;
-                foreach (IRestoreListener listener in listeners) {
-                    listener.RestoreDone(damagedFilesList);
-                }
-            } 
-            */
         }
 
 

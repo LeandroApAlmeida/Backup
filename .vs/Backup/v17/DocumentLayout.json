@@ -3,28 +3,18 @@
   "WorkspaceRootPath": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\drive\\drive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|solutionrelative:drive\\drive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Backup||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\drive\\saferestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A21CD975-7F30-4833-AAF1-98FDDA95AFD9}|Drive\\Drive.csproj|solutionrelative:drive\\saferestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\selectdrivedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|solutionrelative:backup\\forms\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8410DF-E934-4AD6-A187-840251C53F41}|Backup\\Backup.csproj|d:\\2. software\\1. projetos pessoais\\backup\\src\\backup\\backup\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +24,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,75 +48,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SafeRestore.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\SafeRestore.cs",
-              "RelativeDocumentMoniker": "Drive\\SafeRestore.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\SafeRestore.cs",
-              "RelativeToolTip": "Drive\\SafeRestore.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAowDwAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T18:56:56.359Z",
+              "DocumentIndex": 0,
+              "Title": "Backup",
+              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Backup.csproj",
+              "RelativeDocumentMoniker": "Backup\\Backup.csproj",
+              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Backup.csproj",
+              "RelativeToolTip": "Backup\\Backup.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-09T00:27:27.639Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SelectDriveDialog.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\SelectDriveDialog.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
-              "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAgwCwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T18:34:20.466Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SelectDriveDialog.cs [Design]",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs",
-              "RelativeDocumentMoniker": "Backup\\Forms\\SelectDriveDialog.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\SelectDriveDialog.cs [Design]",
-              "RelativeToolTip": "Backup\\Forms\\SelectDriveDialog.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T18:34:18.574Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "MainWindow.cs",
               "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
               "RelativeDocumentMoniker": "Backup\\Forms\\MainWindow.cs",
               "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
               "RelativeToolTip": "Backup\\Forms\\MainWindow.cs",
-              "ViewState": "AQIAAI0CAAAAAAAAAAAuwKQCAAAtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAK0EAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T18:33:14.129Z"
+              "WhenOpened": "2024-04-09T00:14:39.371Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "MainWindow.cs [Design]",
               "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs",
               "RelativeDocumentMoniker": "Backup\\Forms\\MainWindow.cs",
               "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Backup\\Forms\\MainWindow.cs [Design]",
               "RelativeToolTip": "Backup\\Forms\\MainWindow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T18:33:01.346Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Drive.cs",
-              "DocumentMoniker": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\Drive.cs",
-              "RelativeDocumentMoniker": "Drive\\Drive.cs",
-              "ToolTip": "D:\\2. SOFTWARE\\1. PROJETOS PESSOAIS\\BACKUP\\src\\Backup\\Drive\\Drive.cs",
-              "RelativeToolTip": "Drive\\Drive.cs",
-              "ViewState": "AQIAAPICAAAAAAAAAAAmwIUDAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T18:29:22.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-09T00:12:15.162Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

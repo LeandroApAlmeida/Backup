@@ -43,38 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Backup.exe" size="197560">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Backup.exe" size="198072">
       <assemblyIdentity name="Backup" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GpVpPbSmYzPrsaM1Oszx9f9SUcyiZwmvnWLbkgajj/0=</dsig:DigestValue>
+        <dsig:DigestValue>hkEM85OG8LLwYVJoRCFml9AXdZpLvplyBOS64VLSyUs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="55296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Drive.dll" size="55808">
       <assemblyIdentity name="Drive" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gPIlJwqFbZqh/Vhqko/mS7TefCxlDDXZw1VLpgd9QJc=</dsig:DigestValue>
+        <dsig:DigestValue>5w4sjbTyURiuHCjxHubRrCjjALjKLR6IWW4qtlZpw/U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Environment.dll" size="12288">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Environment.dll" size="13824">
       <assemblyIdentity name="Environment" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YTm3pgk5OmC/YdmZaHwjPUWuHXMam/TKIPBZTHwbZKg=</dsig:DigestValue>
+        <dsig:DigestValue>JScuncCMA3/2suxSthTa4jeM0kPjlWUclgAVHjLnrZU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -25,10 +25,9 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Arquivos novos", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Arquivos excluídos", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Arquivos atualizados", System.Windows.Forms.HorizontalAlignment.Left);
-            this.ribbon = new System.Windows.Forms.Ribbon();
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Arquivos novos", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Arquivos excluídos", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Arquivos atualizados", System.Windows.Forms.HorizontalAlignment.Left);
             this.romSelectDrive = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
             this.rsUninstall = new System.Windows.Forms.RibbonSeparator();
@@ -42,30 +41,20 @@
             this.rbtModeBackup = new System.Windows.Forms.RibbonButton();
             this.rbtModeRestore = new System.Windows.Forms.RibbonButton();
             this.rboClose = new System.Windows.Forms.RibbonOrbOptionButton();
+            this.rboEjectDrive = new System.Windows.Forms.RibbonOrbOptionButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
-            this.rbtBackup = new System.Windows.Forms.RibbonTab();
-            this.rbpBackup = new System.Windows.Forms.RibbonPanel();
-            this.rbbRunBackup = new System.Windows.Forms.RibbonButton();
-            this.rbpSearchBackupUpdates = new System.Windows.Forms.RibbonPanel();
-            this.rbbSearchBackupUpdates = new System.Windows.Forms.RibbonButton();
             this.rbpBackupHistory = new System.Windows.Forms.RibbonPanel();
             this.rbbBackupHistory = new System.Windows.Forms.RibbonButton();
             this.rbpSourceDirectories = new System.Windows.Forms.RibbonPanel();
             this.rbbSourceDirectories = new System.Windows.Forms.RibbonButton();
             this.rbpCancelBackup = new System.Windows.Forms.RibbonPanel();
             this.rbbCancelBackup = new System.Windows.Forms.RibbonButton();
-            this.rbtRestore = new System.Windows.Forms.RibbonTab();
             this.rbpSelectRestoreDrive = new System.Windows.Forms.RibbonPanel();
             this.rbbSelectRestoreDrive = new System.Windows.Forms.RibbonButton();
             this.rbpRunRestore = new System.Windows.Forms.RibbonPanel();
             this.rbbRunRestore = new System.Windows.Forms.RibbonButton();
-            this.rbpCancelRestore = new System.Windows.Forms.RibbonPanel();
-            this.rbbCancelRestore = new System.Windows.Forms.RibbonButton();
-            this.rbtHelp = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.rbpAbout = new System.Windows.Forms.RibbonPanel();
             this.rbbAbout = new System.Windows.Forms.RibbonButton();
-            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
             this.ribbonLabel3 = new System.Windows.Forms.RibbonLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -87,53 +76,19 @@
             this.tsmiOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.imlFiles = new System.Windows.Forms.ImageList(this.components);
             this.object_9dd98f0d_2cd2_4aab_8a57_52c170958b7f = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
+            this.rbtHelp = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.rbtBackup = new System.Windows.Forms.RibbonTab();
+            this.rbpRunBackup = new System.Windows.Forms.RibbonPanel();
+            this.rbbRunBackup = new System.Windows.Forms.RibbonButton();
+            this.rbpSearchBackupUpdates = new System.Windows.Forms.RibbonPanel();
+            this.rbbSearchBackupUpdates = new System.Windows.Forms.RibbonButton();
+            this.ribbon = new System.Windows.Forms.Ribbon();
+            this.rbbFindUpdates = new System.Windows.Forms.RibbonButton();
             this.statusStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ribbon
-            // 
-            this.ribbon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ribbon.CaptionBarVisible = false;
-            this.ribbon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ribbon.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Minimized = false;
-            this.ribbon.Name = "ribbon";
-            // 
-            // 
-            // 
-            this.ribbon.OrbDropDown.BorderRoundness = 8;
-            this.ribbon.OrbDropDown.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.romSelectDrive);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.rsUninstall);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.romUninstall);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.rsDirectories);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.romDirectories);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.rsRestore);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.romProps);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.rsProps);
-            this.ribbon.OrbDropDown.MenuItems.Add(this.romMode);
-            this.ribbon.OrbDropDown.Name = "";
-            this.ribbon.OrbDropDown.OptionItems.Add(this.rboClose);
-            this.ribbon.OrbDropDown.RecentItemsCaption = "Backups Recentes:";
-            this.ribbon.OrbDropDown.Size = new System.Drawing.Size(527, 304);
-            this.ribbon.OrbDropDown.TabIndex = 0;
-            this.ribbon.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
-            this.ribbon.OrbText = "Unidade de Backup";
-            // 
-            // 
-            // 
-            this.ribbon.QuickAccessToolbar.DropDownButtonItems.Add(this.ribbonButton2);
-            this.ribbon.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.ribbon.Size = new System.Drawing.Size(889, 109);
-            this.ribbon.TabIndex = 0;
-            this.ribbon.Tabs.Add(this.rbtBackup);
-            this.ribbon.Tabs.Add(this.rbtRestore);
-            this.ribbon.Tabs.Add(this.rbtHelp);
-            this.ribbon.TabSpacing = 3;
-            this.ribbon.Text = "ribbon1";
             // 
             // romSelectDrive
             // 
@@ -219,6 +174,7 @@
             // 
             // rbtModeBackup
             // 
+            this.rbtModeBackup.Checked = true;
             this.rbtModeBackup.CheckedGroup = "";
             this.rbtModeBackup.CheckOnClick = true;
             this.rbtModeBackup.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
@@ -250,6 +206,15 @@
             this.rboClose.Text = "Fechar";
             this.rboClose.Click += new System.EventHandler(this.rboExit_Click);
             // 
+            // rboEjectDrive
+            // 
+            this.rboEjectDrive.Image = global::Backup.Properties.Resources.eject_10;
+            this.rboEjectDrive.LargeImage = global::Backup.Properties.Resources.eject_10;
+            this.rboEjectDrive.Name = "rboEjectDrive";
+            this.rboEjectDrive.SmallImage = global::Backup.Properties.Resources.eject_10;
+            this.rboEjectDrive.Text = "Ejetar";
+            this.rboEjectDrive.Click += new System.EventHandler(this.rboEjectDrive_Click);
+            // 
             // ribbonButton2
             // 
             this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
@@ -257,53 +222,6 @@
             this.ribbonButton2.Name = "ribbonButton2";
             this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
             this.ribbonButton2.Text = "Teste";
-            // 
-            // rbtBackup
-            // 
-            this.rbtBackup.Name = "rbtBackup";
-            this.rbtBackup.Panels.Add(this.rbpBackup);
-            this.rbtBackup.Panels.Add(this.rbpSearchBackupUpdates);
-            this.rbtBackup.Panels.Add(this.rbpBackupHistory);
-            this.rbtBackup.Panels.Add(this.rbpSourceDirectories);
-            this.rbtBackup.Panels.Add(this.rbpCancelBackup);
-            this.rbtBackup.Text = "Backup";
-            this.rbtBackup.ToolTip = "";
-            this.rbtBackup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.rbtBackup.ToolTipTitle = "Backup";
-            // 
-            // rbpBackup
-            // 
-            this.rbpBackup.Items.Add(this.rbbRunBackup);
-            this.rbpBackup.Name = "rbpBackup";
-            this.rbpBackup.Text = "Backup";
-            this.rbpBackup.ButtonMoreClick += new System.EventHandler(this.rbpBackup_ButtonMoreClick_1);
-            // 
-            // rbbRunBackup
-            // 
-            this.rbbRunBackup.Image = global::Backup.Properties.Resources.run_backup_32;
-            this.rbbRunBackup.LargeImage = global::Backup.Properties.Resources.run_backup_32;
-            this.rbbRunBackup.MinimumSize = new System.Drawing.Size(65, 0);
-            this.rbbRunBackup.Name = "rbbRunBackup";
-            this.rbbRunBackup.SmallImage = global::Backup.Properties.Resources.run_backup_32;
-            this.rbbRunBackup.ToolTip = "";
-            this.rbbRunBackup.Click += new System.EventHandler(this.rbbRunBackup_Click);
-            // 
-            // rbpSearchBackupUpdates
-            // 
-            this.rbpSearchBackupUpdates.Items.Add(this.rbbSearchBackupUpdates);
-            this.rbpSearchBackupUpdates.Name = "rbpSearchBackupUpdates";
-            this.rbpSearchBackupUpdates.Text = "Atualizar  ";
-            this.rbpSearchBackupUpdates.ButtonMoreClick += new System.EventHandler(this.rbpUpdate_ButtonMoreClick);
-            // 
-            // rbbSearchBackupUpdates
-            // 
-            this.rbbSearchBackupUpdates.Image = global::Backup.Properties.Resources.find_32;
-            this.rbbSearchBackupUpdates.LargeImage = global::Backup.Properties.Resources.find_32;
-            this.rbbSearchBackupUpdates.MinimumSize = new System.Drawing.Size(65, 0);
-            this.rbbSearchBackupUpdates.Name = "rbbSearchBackupUpdates";
-            this.rbbSearchBackupUpdates.SmallImage = global::Backup.Properties.Resources.find_32;
-            this.rbbSearchBackupUpdates.ToolTip = "";
-            this.rbbSearchBackupUpdates.Click += new System.EventHandler(this.rbbUpdate_Click);
             // 
             // rbpBackupHistory
             // 
@@ -358,14 +276,6 @@
             this.rbbCancelBackup.ToolTip = "";
             this.rbbCancelBackup.Click += new System.EventHandler(this.rbbCancelProccess_Click);
             // 
-            // rbtRestore
-            // 
-            this.rbtRestore.Name = "rbtRestore";
-            this.rbtRestore.Panels.Add(this.rbpSelectRestoreDrive);
-            this.rbtRestore.Panels.Add(this.rbpRunRestore);
-            this.rbtRestore.Panels.Add(this.rbpCancelRestore);
-            this.rbtRestore.Text = "Restore";
-            // 
             // rbpSelectRestoreDrive
             // 
             this.rbpSelectRestoreDrive.ButtonMoreVisible = false;
@@ -380,7 +290,7 @@
             this.rbbSelectRestoreDrive.MinimumSize = new System.Drawing.Size(65, 0);
             this.rbbSelectRestoreDrive.Name = "rbbSelectRestoreDrive";
             this.rbbSelectRestoreDrive.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbbSelectRestoreDrive.SmallImage")));
-            this.rbbSelectRestoreDrive.Click += new System.EventHandler(this.ribbonButton4_Click);
+            this.rbbSelectRestoreDrive.Click += new System.EventHandler(this.rbbSelectRestoreDrive_Click);
             // 
             // rbpRunRestore
             // 
@@ -398,34 +308,12 @@
             this.rbbRunRestore.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbbRunRestore.SmallImage")));
             this.rbbRunRestore.Click += new System.EventHandler(this.rbbRunRestore_Click);
             // 
-            // rbpCancelRestore
+            // rbpAbout
             // 
-            this.rbpCancelRestore.ButtonMoreVisible = false;
-            this.rbpCancelRestore.Items.Add(this.rbbCancelRestore);
-            this.rbpCancelRestore.Name = "rbpCancelRestore";
-            this.rbpCancelRestore.Text = "Cancelar";
-            // 
-            // rbbCancelRestore
-            // 
-            this.rbbCancelRestore.Image = global::Backup.Properties.Resources.cancel_32;
-            this.rbbCancelRestore.LargeImage = global::Backup.Properties.Resources.cancel_32;
-            this.rbbCancelRestore.MinimumSize = new System.Drawing.Size(65, 0);
-            this.rbbCancelRestore.Name = "rbbCancelRestore";
-            this.rbbCancelRestore.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbbCancelRestore.SmallImage")));
-            // 
-            // rbtHelp
-            // 
-            this.rbtHelp.Name = "rbtHelp";
-            this.rbtHelp.Panels.Add(this.ribbonPanel1);
-            this.rbtHelp.Panels.Add(this.ribbonPanel2);
-            this.rbtHelp.Text = "Ajuda";
-            // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.ButtonMoreVisible = false;
-            this.ribbonPanel1.Items.Add(this.rbbAbout);
-            this.ribbonPanel1.Name = "ribbonPanel1";
-            this.ribbonPanel1.Text = "Sobre";
+            this.rbpAbout.ButtonMoreVisible = false;
+            this.rbpAbout.Items.Add(this.rbbAbout);
+            this.rbpAbout.Name = "rbpAbout";
+            this.rbpAbout.Text = "Sobre";
             // 
             // rbbAbout
             // 
@@ -433,24 +321,8 @@
             this.rbbAbout.LargeImage = global::Backup.Properties.Resources.about_32;
             this.rbbAbout.MinimumSize = new System.Drawing.Size(65, 0);
             this.rbbAbout.Name = "rbbAbout";
-            this.rbbAbout.SmallImage = global::Backup.Properties.Resources.about_32;
-            this.rbbAbout.Click += new System.EventHandler(this.rbbAbout_Click);
-            // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ButtonMoreVisible = false;
-            this.ribbonPanel2.Items.Add(this.ribbonButton1);
-            this.ribbonPanel2.Name = "ribbonPanel2";
-            this.ribbonPanel2.Text = "Manual";
-            // 
-            // ribbonButton1
-            // 
-            this.ribbonButton1.Image = global::Backup.Properties.Resources.help_32;
-            this.ribbonButton1.LargeImage = global::Backup.Properties.Resources.help_32;
-            this.ribbonButton1.MinimumSize = new System.Drawing.Size(65, 0);
-            this.ribbonButton1.Name = "ribbonButton1";
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
+            this.rbbAbout.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbbAbout.SmallImage")));
+            this.rbbAbout.Click += new System.EventHandler(this.ribbonButton1_Click);
             // 
             // ribbonLabel2
             // 
@@ -531,16 +403,16 @@
             this.columnHeader5});
             this.ltvFiles.ContextMenuStrip = this.contextMenuStrip;
             this.ltvFiles.FullRowSelect = true;
-            listViewGroup1.Header = "Arquivos novos";
-            listViewGroup1.Name = "lvgCreateFiles";
-            listViewGroup2.Header = "Arquivos excluídos";
-            listViewGroup2.Name = "lvgDeletedFiles";
-            listViewGroup3.Header = "Arquivos atualizados";
-            listViewGroup3.Name = "lvgUpdatedFiles";
+            listViewGroup4.Header = "Arquivos novos";
+            listViewGroup4.Name = "lvgCreateFiles";
+            listViewGroup5.Header = "Arquivos excluídos";
+            listViewGroup5.Name = "lvgDeletedFiles";
+            listViewGroup6.Header = "Arquivos atualizados";
+            listViewGroup6.Name = "lvgUpdatedFiles";
             this.ltvFiles.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6});
             this.ltvFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.ltvFiles.HideSelection = false;
             this.ltvFiles.LabelWrap = false;
@@ -587,7 +459,7 @@
             this.toolStripSeparator1,
             this.tsmiOpenFolder});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(220, 104);
+            this.contextMenuStrip.Size = new System.Drawing.Size(220, 82);
             // 
             // tsmiOpenFile
             // 
@@ -629,6 +501,125 @@
             this.object_9dd98f0d_2cd2_4aab_8a57_52c170958b7f.Style = System.Windows.Forms.RibbonButtonStyle.DropDown;
             this.object_9dd98f0d_2cd2_4aab_8a57_52c170958b7f.Text = "Selecionar";
             // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ButtonMoreVisible = false;
+            this.ribbonPanel4.Name = "ribbonPanel4";
+            this.ribbonPanel4.Text = "Selecionar";
+            // 
+            // rbtHelp
+            // 
+            this.rbtHelp.Name = "rbtHelp";
+            this.rbtHelp.Panels.Add(this.rbpAbout);
+            this.rbtHelp.Text = "Ajuda";
+            // 
+            // ribbonPanel1
+            // 
+            this.ribbonPanel1.ButtonMoreVisible = false;
+            this.ribbonPanel1.Name = "ribbonPanel1";
+            this.ribbonPanel1.Text = "Sobre";
+            // 
+            // rbtBackup
+            // 
+            this.rbtBackup.Name = "rbtBackup";
+            this.rbtBackup.Panels.Add(this.rbpRunBackup);
+            this.rbtBackup.Panels.Add(this.rbpSearchBackupUpdates);
+            this.rbtBackup.Panels.Add(this.rbpBackupHistory);
+            this.rbtBackup.Panels.Add(this.rbpSourceDirectories);
+            this.rbtBackup.Panels.Add(this.rbpSelectRestoreDrive);
+            this.rbtBackup.Panels.Add(this.rbpRunRestore);
+            this.rbtBackup.Panels.Add(this.rbpCancelBackup);
+            this.rbtBackup.Text = "Backup";
+            this.rbtBackup.ToolTip = "";
+            this.rbtBackup.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.rbtBackup.ToolTipTitle = "Backup";
+            // 
+            // rbpRunBackup
+            // 
+            this.rbpRunBackup.Items.Add(this.rbbRunBackup);
+            this.rbpRunBackup.Name = "rbpRunBackup";
+            this.rbpRunBackup.Text = "Backup";
+            this.rbpRunBackup.ButtonMoreClick += new System.EventHandler(this.rbpBackup_ButtonMoreClick);
+            // 
+            // rbbRunBackup
+            // 
+            this.rbbRunBackup.Image = global::Backup.Properties.Resources.run_backup_32;
+            this.rbbRunBackup.LargeImage = global::Backup.Properties.Resources.run_backup_32;
+            this.rbbRunBackup.MinimumSize = new System.Drawing.Size(65, 0);
+            this.rbbRunBackup.Name = "rbbRunBackup";
+            this.rbbRunBackup.SmallImage = global::Backup.Properties.Resources.run_backup_32;
+            this.rbbRunBackup.ToolTip = "";
+            this.rbbRunBackup.Click += new System.EventHandler(this.rbbRunBackup_Click);
+            // 
+            // rbpSearchBackupUpdates
+            // 
+            this.rbpSearchBackupUpdates.Items.Add(this.rbbSearchBackupUpdates);
+            this.rbpSearchBackupUpdates.Name = "rbpSearchBackupUpdates";
+            this.rbpSearchBackupUpdates.Text = "Atualizar  ";
+            this.rbpSearchBackupUpdates.ButtonMoreClick += new System.EventHandler(this.rbpUpdate_ButtonMoreClick);
+            // 
+            // rbbSearchBackupUpdates
+            // 
+            this.rbbSearchBackupUpdates.Image = global::Backup.Properties.Resources.find_32;
+            this.rbbSearchBackupUpdates.LargeImage = global::Backup.Properties.Resources.find_32;
+            this.rbbSearchBackupUpdates.MinimumSize = new System.Drawing.Size(65, 0);
+            this.rbbSearchBackupUpdates.Name = "rbbSearchBackupUpdates";
+            this.rbbSearchBackupUpdates.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbbSearchBackupUpdates.SmallImage")));
+            this.rbbSearchBackupUpdates.ToolTip = "";
+            this.rbbSearchBackupUpdates.Click += new System.EventHandler(this.rbbUpdate_Click);
+            // 
+            // ribbon
+            // 
+            this.ribbon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ribbon.CaptionBarVisible = false;
+            this.ribbon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ribbon.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Minimized = false;
+            this.ribbon.Name = "ribbon";
+            // 
+            // 
+            // 
+            this.ribbon.OrbDropDown.BorderRoundness = 2;
+            this.ribbon.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.romSelectDrive);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.rsUninstall);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.romUninstall);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.rsDirectories);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.romDirectories);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.rsRestore);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.romProps);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.rsProps);
+            this.ribbon.OrbDropDown.MenuItems.Add(this.romMode);
+            this.ribbon.OrbDropDown.Name = "";
+            this.ribbon.OrbDropDown.OptionItems.Add(this.rboClose);
+            this.ribbon.OrbDropDown.OptionItems.Add(this.rboEjectDrive);
+            this.ribbon.OrbDropDown.RecentItemsCaption = "Backups Recentes:";
+            this.ribbon.OrbDropDown.Size = new System.Drawing.Size(527, 304);
+            this.ribbon.OrbDropDown.TabIndex = 0;
+            this.ribbon.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
+            this.ribbon.OrbText = "Unidade de Backup";
+            // 
+            // 
+            // 
+            this.ribbon.QuickAccessToolbar.DropDownButtonItems.Add(this.ribbonButton2);
+            this.ribbon.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.ribbon.Size = new System.Drawing.Size(889, 109);
+            this.ribbon.TabIndex = 0;
+            this.ribbon.Tabs.Add(this.rbtBackup);
+            this.ribbon.Tabs.Add(this.rbtHelp);
+            this.ribbon.TabSpacing = 3;
+            this.ribbon.Text = "ribbon1";
+            // 
+            // rbbFindUpdates
+            // 
+            this.rbbFindUpdates.Image = global::Backup.Properties.Resources.find_32;
+            this.rbbFindUpdates.LargeImage = global::Backup.Properties.Resources.find_32;
+            this.rbbFindUpdates.MinimumSize = new System.Drawing.Size(65, 0);
+            this.rbbFindUpdates.Name = "rbbFindUpdates";
+            this.rbbFindUpdates.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbbFindUpdates.SmallImage")));
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,21 +644,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Ribbon ribbon;
         private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbMenuItem1;
-        private System.Windows.Forms.RibbonPanel rbpBackup;
         private System.Windows.Forms.RibbonOrbOptionButton rboClose;
-        private System.Windows.Forms.RibbonButton rbbRunBackup;
         private System.Windows.Forms.RibbonPanel rbpBackupHistory;
         private System.Windows.Forms.RibbonButton rbbBackupHistory;
-        private System.Windows.Forms.RibbonTab rbtBackup;
         private System.Windows.Forms.RibbonButton ribbonButton2;
         private System.Windows.Forms.RibbonSeparator rsUninstall;
         private System.Windows.Forms.RibbonOrbMenuItem romUninstall;
         private System.Windows.Forms.RibbonOrbMenuItem romProps;
-        private System.Windows.Forms.RibbonPanel rbpSearchBackupUpdates;
-        private System.Windows.Forms.RibbonButton rbbSearchBackupUpdates;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbMenuItem4;
         private System.Windows.Forms.RibbonLabel ribbonLabel2;
@@ -687,7 +671,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.RibbonTab rbtHelp;
         private System.Windows.Forms.ImageList imlFiles;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ToolStripStatusLabel lblLastBackupDate;
@@ -697,28 +680,35 @@
         private System.Windows.Forms.RibbonPanel rbpVisualStyle;
         private System.Windows.Forms.ToolStripProgressBar pgbFiles;
         private System.Windows.Forms.ToolStripStatusLabel tslStatus;
-        private System.Windows.Forms.RibbonPanel ribbonPanel1;
         private System.Windows.Forms.ToolStripStatusLabel lblProccessStatus;
+        private System.Windows.Forms.RibbonPanel rbpAbout;
         private System.Windows.Forms.RibbonButton rbbAbout;
-        private System.Windows.Forms.RibbonPanel ribbonPanel2;
-        private System.Windows.Forms.RibbonButton ribbonButton1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem tsmiOpenFile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiOpenFolder;
         private System.Windows.Forms.ToolStripStatusLabel tsslFileName;
         private System.Windows.Forms.RibbonOrbOptionButton rboEject;
-        private System.Windows.Forms.RibbonTab rbtRestore;
-        private System.Windows.Forms.RibbonPanel rbpSelectRestoreDrive;
-        private System.Windows.Forms.RibbonButton rbbSelectRestoreDrive;
         private System.Windows.Forms.RibbonOrbMenuItem romMode;
         private System.Windows.Forms.RibbonButton rbtModeBackup;
         private System.Windows.Forms.RibbonButton rbtModeRestore;
         private System.Windows.Forms.RibbonSeparator rsProps;
+        private System.Windows.Forms.RibbonOrbOptionButton rboEjectDrive;
+        private System.Windows.Forms.RibbonPanel ribbonPanel3;
+        private System.Windows.Forms.RibbonPanel ribbonPanel4;
+        private System.Windows.Forms.RibbonPanel rbpSelectRestoreDrive;
+        private System.Windows.Forms.RibbonButton rbbSelectRestoreDrive;
         private System.Windows.Forms.RibbonPanel rbpRunRestore;
         private System.Windows.Forms.RibbonButton rbbRunRestore;
-        private System.Windows.Forms.RibbonPanel rbpCancelRestore;
-        private System.Windows.Forms.RibbonButton rbbCancelRestore;
+        private System.Windows.Forms.RibbonTab rbtHelp;
+        private System.Windows.Forms.RibbonPanel ribbonPanel1;
+        private System.Windows.Forms.RibbonTab rbtBackup;
+        private System.Windows.Forms.Ribbon ribbon;
+        private System.Windows.Forms.RibbonPanel rbpRunBackup;
+        private System.Windows.Forms.RibbonButton rbbRunBackup;
+        private System.Windows.Forms.RibbonPanel rbpSearchBackupUpdates;
+        private System.Windows.Forms.RibbonButton rbbFindUpdates;
+        private System.Windows.Forms.RibbonButton rbbSearchBackupUpdates;
     }
 }
 

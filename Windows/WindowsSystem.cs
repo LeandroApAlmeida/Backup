@@ -6,7 +6,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Management.Instrumentation;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
+using System.Security.Policy;
+using System.Text;
+using System.Threading;
 
 namespace Backup.Windows {
 
@@ -118,6 +123,138 @@ namespace Backup.Windows {
         }
 
 
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern IntPtr CreateFile(
+            string lpFileName,
+            uint dwDesiredAccess,
+            uint dwShareMode,
+            IntPtr SecurityAttributes,
+            uint dwCreationDisposition,
+            uint dwFlagsAndAttributes,
+            IntPtr hTemplateFile
+        );
+
+        [DllImport("kernel32.dll", ExactSpelling = true, SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern bool DeviceIoControl(
+            IntPtr hDevice,
+            uint dwIoControlCode,
+            IntPtr lpInBuffer,
+            uint nInBufferSize,
+            IntPtr lpOutBuffer,
+            uint nOutBufferSize,
+            out uint lpBytesReturned,
+            IntPtr lpOverlapped
+        );
+
+        [DllImport("kernel32.dll", ExactSpelling = true, SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern bool DeviceIoControl(
+            IntPtr hDevice,
+            uint dwIoControlCode,
+            byte[] lpInBuffer,
+            uint nInBufferSize,
+            IntPtr lpOutBuffer,
+            uint nOutBufferSize,
+            out uint lpBytesReturned,
+            IntPtr lpOverlapped
+        );
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CloseHandle(IntPtr hObject);
+
+        private static IntPtr _handle;
+
+        const uint GENERIC_READ = 0x80000000;
+        const uint GENERIC_WRITE = 0x40000000;
+        const int FILE_SHARE_READ = 0x1;
+        const int FILE_SHARE_WRITE = 0x2;
+        const int FSCTL_LOCK_VOLUME = 0x00090018;
+        const int FSCTL_DISMOUNT_VOLUME = 0x00090020;
+        const int IOCTL_STORAGE_EJECT_MEDIA = 0x2D4808;
+        const int IOCTL_STORAGE_MEDIA_REMOVAL = 0x002D4804;
+
+
+        public static bool Eject(string diskDrive) {
+            
+            string filename = @"\\.\" + diskDrive[0] + ":";
+            _handle = CreateFile(
+                filename,
+                GENERIC_READ |GENERIC_WRITE,
+                FILE_SHARE_READ | FILE_SHARE_WRITE,
+                IntPtr.Zero,
+                0x3,
+                0,
+                IntPtr.Zero
+            );
+
+            bool lockVolume = false;
+
+            for (int i = 0; i < 10; i++) {
+                lockVolume = DeviceIoControl(
+                    _handle,
+                    FSCTL_LOCK_VOLUME,
+                    IntPtr.Zero,
+                    0,
+                    IntPtr.Zero,
+                    0,
+                    out uint byteReturned,
+                    IntPtr.Zero
+                );
+                if (lockVolume) {
+                    break;
+                }
+                Thread.Sleep(500);
+            }
+
+            if (lockVolume) {
+
+                bool dismountVolume = DeviceIoControl(
+                    _handle,
+                    FSCTL_DISMOUNT_VOLUME,
+                    IntPtr.Zero,
+                    0,
+                    IntPtr.Zero,
+                    0,
+                    out uint byteReturned,
+                    IntPtr.Zero
+                );
+
+                if (dismountVolume) {
+
+                    var buf = new byte[1] { 0 };
+                    DeviceIoControl(
+                        _handle,
+                        IOCTL_STORAGE_MEDIA_REMOVAL,
+                        buf,
+                        1,
+                        IntPtr.Zero,
+                        0,
+                        out uint retVal,
+                        IntPtr.Zero
+                    );
+
+                    DeviceIoControl(
+                        _handle,
+                        IOCTL_STORAGE_EJECT_MEDIA,
+                        IntPtr.Zero,
+                        0,
+                        IntPtr.Zero,
+                        0,
+                        out uint _byteReturned,
+                        IntPtr.Zero
+                    );
+
+                }
+
+                CloseHandle(_handle);
+
+            }
+
+            return !Directory.Exists(diskDrive[0] + @":\");
+
+        }
+
+
         #endregion
 
 
@@ -143,7 +280,7 @@ namespace Backup.Windows {
 
 
         /// <summary>
-        /// Estrair o ícone associado a um arquivo, de acordo com a sua extensão.
+        /// Extrair o ícone associado a um arquivo, de acordo com a sua extensão.
         /// </summary>
         /// <param name="path">Path do arquivo.</param>
         /// <returns>Ícone associado ao arquivo</returns>
@@ -187,21 +324,15 @@ namespace Backup.Windows {
             IntPtr nativeFolder;
             uint psfgaoOut;
             SHParseDisplayName(folderPath, IntPtr.Zero, out nativeFolder, 0, out psfgaoOut);
-            if (nativeFolder == IntPtr.Zero) {
-                return;
-            }
-            IntPtr nativeFile;
-            SHParseDisplayName(file, IntPtr.Zero, out nativeFile, 0, out psfgaoOut);
-            IntPtr[] fileArray;
-            if (nativeFile == IntPtr.Zero) {
-                fileArray = new IntPtr[0];
-            } else {
-                fileArray = new IntPtr[] { nativeFile };
-            }
-            SHOpenFolderAndSelectItems(nativeFolder, (uint)fileArray.Length, fileArray, 0);
-            Marshal.FreeCoTaskMem(nativeFolder);
-            if (nativeFile != IntPtr.Zero) {
-                Marshal.FreeCoTaskMem(nativeFile);
+            if (nativeFolder != IntPtr.Zero) {
+                IntPtr nativeFile;
+                SHParseDisplayName(file, IntPtr.Zero, out nativeFile, 0, out psfgaoOut);
+                IntPtr[] fileArray = (nativeFile == IntPtr.Zero ? new IntPtr[0] : new IntPtr[] { nativeFile });
+                SHOpenFolderAndSelectItems(nativeFolder, (uint)fileArray.Length, fileArray, 0);
+                Marshal.FreeCoTaskMem(nativeFolder);
+                if (nativeFile != IntPtr.Zero) {
+                    Marshal.FreeCoTaskMem(nativeFile);
+                }
             }
         }
 
@@ -227,25 +358,6 @@ namespace Backup.Windows {
             psi.RedirectStandardOutput = false;
             psi.RedirectStandardInput = false;
             Process.Start(psi);
-        }
-
-
-        #endregion
-
-
-
-
-        #region Windows
-
-
-        public static void SetEnviromentVariable() {
-            var name = "Path";
-            var target = EnvironmentVariableTarget.Machine;
-            var oldValue = Environment.GetEnvironmentVariable(name, target);
-            if (oldValue == null) {
-                String newValue = String.Concat(oldValue, ";", Environment.SystemDirectory);
-                Environment.SetEnvironmentVariable(name, newValue, target);
-            }
         }
 
 

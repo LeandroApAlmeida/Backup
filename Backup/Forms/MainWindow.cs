@@ -62,7 +62,6 @@ namespace Backup.Forms {
             processingBackup = false;
             drivesManager = new DrivesManager();
             selectedDrive = null;
-            rbpCancelBackup.Visible = false;
             pgbFiles.Visible = false;
             tslStatus.Visible = false;
             lblProccessStatus.Visible = false;
@@ -189,8 +188,9 @@ namespace Backup.Forms {
             romProps.Enabled = isSelectedDrive;
             romDirectories.Enabled = isSelectedDrive;
             rboClose.Enabled = isSelectedDrive;
+            rboEjectDrive.Enabled = isSelectedDrive;
             rbbRunBackup.Enabled = isSelectedDrive;
-            rbpBackup.ButtonMoreEnabled = isSelectedDrive;
+            rbpRunBackup.ButtonMoreEnabled = isSelectedDrive;
             rbbSearchBackupUpdates.Enabled = isSelectedDrive;
             rbpSearchBackupUpdates.ButtonMoreEnabled = isSelectedDrive;
             rbbBackupHistory.Enabled = isSelectedDrive;
@@ -231,7 +231,7 @@ namespace Backup.Forms {
                 rbbCancelBackup.Enabled = true;
                 rbpCancelBackup.Visible = true;
                 rbbRunBackup.Enabled = false;
-                rbpBackup.ButtonMoreEnabled = false;
+                rbpRunBackup.ButtonMoreEnabled = false;
                 rbbSearchBackupUpdates.Enabled = false;
                 rbpSearchBackupUpdates.ButtonMoreEnabled = false;
                 rbbBackupHistory.Enabled = false;
@@ -240,6 +240,7 @@ namespace Backup.Forms {
                 romUninstall.Enabled = false;
                 romDirectories.Enabled = false;
                 rboClose.Enabled = false;
+                rboEjectDrive.Enabled = false;
             } else {
                 foreach (RibbonOrbRecentItem item in ribbon.OrbDropDown.RecentItems) {
                     item.Enabled = true;
@@ -255,13 +256,14 @@ namespace Backup.Forms {
                 romDirectories.Enabled = true;
                 tsslFileName.Visible = false;
                 rboClose.Enabled = true;
+                rboEjectDrive.Enabled = true;
                 int numFiles = ltvFiles.Items.Count;
                 if (numFiles > 0) {
                     rbbRunBackup.Enabled = true;
-                    rbpBackup.ButtonMoreEnabled = true;
+                    rbpRunBackup.ButtonMoreEnabled = true;
                 } else {
                     rbbRunBackup.Enabled = false;
-                    rbpBackup.ButtonMoreEnabled = false;
+                    rbpRunBackup.ButtonMoreEnabled = false;
                 }
             }
         }
@@ -272,22 +274,24 @@ namespace Backup.Forms {
                 rbbSelectRestoreDrive.Enabled = false;
                 rbbRunRestore.Enabled = false;
                 rbpRunRestore.ButtonMoreEnabled = false;
-                rbpCancelRestore.Visible = true;
+                rbpCancelBackup.Visible = true;
                 romUninstall.Enabled = false;
                 romDirectories.Enabled = false;
                 tsslFileName.Visible = true;
                 tsslFileName.Text = "";
                 rboClose.Enabled = false;
+                rboEjectDrive.Enabled = false;
             } else {
                 rbbSelectRestoreDrive.Enabled = true;
                 rbbRunRestore.Enabled = true;
                 rbpRunRestore.ButtonMoreEnabled = true;
-                rbpCancelRestore.Visible = false;
+                rbpCancelBackup.Visible = false;
                 romUninstall.Enabled = true;
                 romDirectories.Enabled = true;
                 tsslFileName.Visible = false;
                 tsslFileName.Text = "";
                 rboClose.Enabled = true;
+                rboEjectDrive.Enabled = true;
                 int numFiles = ltvFiles.Items.Count;
                 if (numFiles > 0) {
                     rbbRunRestore.Enabled = true;
@@ -319,9 +323,14 @@ namespace Backup.Forms {
                 if (changeMode) {
                     backupMode = true;
                     ltvFiles.Items.Clear();
-                    rbtBackup.Visible = true;
-                    rbtRestore.Visible = false;
-                    ribbon.ActiveTab = ribbon.Tabs[0];
+                    rbtBackup.Text = "Backup";
+                    rbpRunBackup.Visible = true;
+                    rbpSearchBackupUpdates.Visible = true;
+                    rbpBackupHistory.Visible = true;
+                    rbpSourceDirectories.Visible = true;
+                    rbpCancelBackup.Visible = false;
+                    rbpSelectRestoreDrive.Visible = false;
+                    rbpRunRestore.Visible = false;
                     if (selectedDrive != null) {
                         if (selectedDrive.SourceDirectories.Count > 0) {
                             SearchBackupUpdates();
@@ -353,9 +362,14 @@ namespace Backup.Forms {
                 if (changeMode) {
                     backupMode = false;
                     ltvFiles.Items.Clear();
-                    rbtBackup.Visible = false;
-                    rbtRestore.Visible = true;
-                    ribbon.ActiveTab = ribbon.Tabs[1];
+                    rbtBackup.Text = "Restauração";
+                    rbpSelectRestoreDrive.Visible = true;
+                    rbpRunRestore.Visible = true;
+                    rbpRunBackup.Visible = false;
+                    rbpSearchBackupUpdates.Visible = false;
+                    rbpBackupHistory.Visible = false;
+                    rbpSourceDirectories.Visible = false;
+                    rbpCancelBackup.Visible = false;
                     SetProcessingRestoreMode(false);
                 }
             }
@@ -517,16 +531,6 @@ namespace Backup.Forms {
 
 
         /// <summary>
-        /// Abrir o manual do programa.
-        /// </summary>
-        private void OpenHelpFile() {
-            Cursor = Cursors.WaitCursor;
-            WindowsSystem.OpenFileWithDefaultProgram(@"Manual\Index.html");
-            Cursor = Cursors.Default;
-        }
-
-
-        /// <summary>
         /// Abrir o arquivo selecionado na lista com o programa padrão definido.
         /// </summary>
         private void OpenSelectedFile() {
@@ -572,9 +576,11 @@ namespace Backup.Forms {
                     SetDriveSelectionMode(true);
                     UpdateRecentFilesList();
                     rbbRunBackup.Enabled = false;
-                    rbpBackup.ButtonMoreEnabled = false;
+                    rbpRunBackup.ButtonMoreEnabled = false;
                     if (selectedDrive.SourceDirectories.Count > 0) {
-                        SearchBackupUpdates();
+                        if (backupMode) {
+                            SearchBackupUpdates();
+                        }
                     }
                 } else {
                     MessageBox.Show(
@@ -609,10 +615,32 @@ namespace Backup.Forms {
             } catch (Exception ex) {
             }
             selectedDrive = null;
-            System.GC.Collect();
+            GC.Collect();
             ltvFiles.Items.Clear();
             ribbon.OrbDropDown.RecentItems.Clear();
             SetDriveSelectionMode(false);
+        }
+
+
+        private void EjectDrive() {
+            try {
+                Cursor = Cursors.WaitCursor;
+                if (selectedDrive != null) {
+                    if (selectedDrive.Eject()) {
+                        CloseDrive();
+                    } else {
+                        MessageBox.Show(
+                            this,
+                            "A Unidade de Backup não foi ejetada. Tente ejetá-la pelo ícone na barra de tarefas do Windows.",
+                            "Erro",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+                }
+            } finally {
+                Cursor = Cursors.Default;
+            }
         }
 
 
@@ -673,7 +701,7 @@ namespace Backup.Forms {
             processingBackup = true;
             proccessAborted = false;
             lblProccessStatus.Visible = true;
-            SetProcessingBackupMode(true);
+            SetProcessingRestoreMode(true);
             selectedDrive.PerformRestoreAsynk(this);
         }
 
@@ -696,7 +724,7 @@ namespace Backup.Forms {
 
         private void ActionAfterBackup() {
             switch (actionAfterBackupCode) {
-                case 2: new PowerOffTimeDialog(300).ShowDialog() ; break;
+                case 2: new PowerOffTimeDialog(selectedDrive, 300).ShowDialog() ; break;
             }
         }
 
@@ -796,7 +824,7 @@ namespace Backup.Forms {
                     }
                     ltvFiles.Items.AddRange(listViewItems);
                     rbbRunBackup.Enabled = (listViewItems.Length > 0);
-                    rbpBackup.ButtonMoreEnabled = (listViewItems.Length > 0);
+                    rbpRunBackup.ButtonMoreEnabled = (listViewItems.Length > 0);
                     if (ltvFiles.Items.Count > 0) {
                         contextMenuStrip.Enabled = true;
                     } else {
@@ -991,19 +1019,19 @@ namespace Backup.Forms {
         }
 
 
-        void ISearchRestoreFilesListener.SearchFinished(LinkedList<RestoreFiles> restoreFilesList,
+        void ISearchRestoreFilesListener.SearchFinished(LinkedList<DriveFiles> restoreFilesList,
         LinkedList<DamageInfo> errorFilesList) {
             Invoke((MethodInvoker)delegate () {
                 try {
                     pgbFiles.Visible = false;
                     ltvFiles.Groups.Clear();
                     int filesCount = 0;
-                    foreach (RestoreFiles restoreFiles in restoreFilesList) {
+                    foreach (DriveFiles restoreFiles in restoreFilesList) {
                         filesCount += restoreFiles.Files.Count;
                     }
                     ListViewItem[] listViewItems = new ListViewItem[filesCount];
                     int index = 0;
-                    foreach (RestoreFiles restoreFiles in restoreFilesList) {
+                    foreach (DriveFiles restoreFiles in restoreFilesList) {
                         ltvFiles.Groups.Add(new ListViewGroup(
                             "Restauração no drive local " + restoreFiles.TargetDrive,
                             HorizontalAlignment.Left)
@@ -1029,7 +1057,7 @@ namespace Backup.Forms {
                     }
                     ltvFiles.Items.AddRange(listViewItems);
                     rbbRunBackup.Enabled = (listViewItems.Length > 0);
-                    rbpBackup.ButtonMoreEnabled = (listViewItems.Length > 0);
+                    rbpRunBackup.ButtonMoreEnabled = (listViewItems.Length > 0);
                     if (ltvFiles.Items.Count > 0) {
                         contextMenuStrip.Enabled = true;
                     } else {
@@ -1065,7 +1093,7 @@ namespace Backup.Forms {
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
-                SetProcessingBackupMode(false);
+                SetProcessingRestoreMode(false);
                 UpdateStatusBarInfo();
                 processingBackup = false;
                 if (ltvFiles.Items.Count > 0) {
@@ -1080,9 +1108,10 @@ namespace Backup.Forms {
 
         void ISearchRestoreFilesListener.SearchAbortedByUser() {
             Invoke((MethodInvoker)delegate () {
-                SetProcessingBackupMode(false);
+                SetProcessingRestoreMode(false);
                 UpdateStatusBarInfo();
                 processingBackup = false;
+                lblProccessStatus.Visible = false;
                 if (ltvFiles.Items.Count > 0) {
                     contextMenuStrip.Enabled = true;
                 } else {
@@ -1144,6 +1173,7 @@ namespace Backup.Forms {
 
         void IRestoreListener.RestoreInitialized(int numberOfFiles) {
             Invoke((MethodInvoker)delegate () {
+                lblProccessStatus.Visible = false;
                 tsslFileName.Visible = true;
                 tsslFileName.Text = "";
                 tslStatus.Visible = true;
@@ -1168,6 +1198,8 @@ namespace Backup.Forms {
             Invoke((MethodInvoker)delegate () {
                 proccessAborted = true;
                 tsslFileName.Visible = false;
+                lblProccessStatus.Visible = false;
+                SetProcessingRestoreMode(false);
             });
         }
 
@@ -1177,6 +1209,8 @@ namespace Backup.Forms {
                 proccessAborted = true;
                 tsslFileName.Visible = false;
                 SetProcessingBackupMode(false);
+                lblProccessStatus.Visible = false;
+                SetProcessingRestoreMode(false);
                 MessageBox.Show(
                     this,
                     ex.Message,
@@ -1194,14 +1228,15 @@ namespace Backup.Forms {
                 tslStatus.Visible = false;
                 pgbFiles.Minimum = 0;
                 pgbFiles.Maximum = 0;
-                rbpCancelRestore.Visible = false;
+                rbpCancelBackup.Visible = false;
                 tsslFileName.Visible = false;
+                lblProccessStatus.Visible = false;
                 if (!proccessAborted) {
                     ltvFiles.Items.Clear();
                     UpdateStatusBarInfo();
-                    SetProcessingBackupMode(false);
+                    SetProcessingRestoreMode(false);
                 } else {
-                    SetProcessingBackupMode(false);
+                    SetProcessingRestoreMode(false);
                 }
                 processingBackup = false;
                 if (errorFilesList.Count > 0) {
@@ -1305,11 +1340,6 @@ namespace Backup.Forms {
         }
 
 
-        private void fecharToolStripMenuItem_Click(object sender, EventArgs e) {
-            CloseDrive();
-        }
-
-
         private void romUninstall_Click(object sender, EventArgs e) {
             ShowUninstallDriveDialog();
         }
@@ -1327,11 +1357,6 @@ namespace Backup.Forms {
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
             UsbMonitor.Instance.RevomeListener(this);
-        }
-
-
-        private void rbpBackup_Click(object sender, EventArgs e) {
-            ShowSearchUpdatesModeDialog();
         }
 
 
@@ -1381,18 +1406,8 @@ namespace Backup.Forms {
         }
 
 
-        private void rbbRestore_Click(object sender, EventArgs e) {
-            
-        }
-
-
-        private void rbbAbout_Click(object sender, EventArgs e) {
-            ShowAboutDialog();
-        }
-
-
         private void ribbonButton1_Click(object sender, EventArgs e) {
-            OpenHelpFile();
+            ShowAboutDialog();
         }
 
 
@@ -1408,16 +1423,6 @@ namespace Backup.Forms {
 
         private void rbpUpdate_ButtonMoreClick(object sender, EventArgs e) {
             ShowSearchUpdatesModeDialog();
-        }
-
-
-        private void rbpBackup_ButtonMoreClick_1(object sender, EventArgs e) {
-            ShowActionAfterBackupDialog();
-        }
-
-
-        private void ribbonButton4_Click(object sender, EventArgs e) {
-            SearchRestoreFiles();
         }
 
 
@@ -1438,6 +1443,16 @@ namespace Backup.Forms {
 
         private void rbbRunRestore_Click(object sender, EventArgs e) {
             DoRestore();
+        }
+
+
+        private void rboEjectDrive_Click(object sender, EventArgs e) {
+            EjectDrive();
+        }
+
+
+        private void rbbSelectRestoreDrive_Click(object sender, EventArgs e) {
+            SearchRestoreFiles();
         }
 
 

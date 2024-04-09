@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Backup.Drive {
 
-    public class RestoreFiles {
+    public class DriveFiles {
 
 
         private readonly String targetDrive;
@@ -15,7 +15,7 @@ namespace Backup.Drive {
         private readonly LinkedList<FileInfo> filesList;
 
 
-        public RestoreFiles(String targetDrive) {
+        public DriveFiles(String targetDrive) {
             filesList = new LinkedList<FileInfo>();
             this.targetDrive = targetDrive;  
         }

@@ -42,6 +42,9 @@
     <Reference Include="System.Management.Instrumentation" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\RibbonWinForms.5.0.1.1\lib\net48\System.Windows.Forms.Ribbon.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,7 +80,7 @@
     <Compile Include="ReadmeFile.cs" />
     <Compile Include="RestoreFile.cs" />
     <Compile Include="SafeRestore.cs" />
-    <Compile Include="RestoreFiles.cs" />
+    <Compile Include="DriveFiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,6 +89,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\BackupDrive.ico" />
   </ItemGroup>
   <ItemGroup>

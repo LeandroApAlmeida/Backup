@@ -20,6 +20,7 @@ namespace Backup.Forms {
     public partial class PowerOffTimeDialog : Form {
 
 
+        private Drive.Drive drive;
         // Intervalo em segundos até o desligamento do computador.
         private int secondsInterval;
         
@@ -31,7 +32,7 @@ namespace Backup.Forms {
         /// <param name="secondsInterval">Número de segundos para o desligamento do
         /// computador.</param>
         /// <exception cref="ArgumentException">Intervalo fora do padrão.</exception>
-        public PowerOffTimeDialog(int secondsInterval = 60) {
+        public PowerOffTimeDialog(Drive.Drive drive, int secondsInterval = 60) {
             if (secondsInterval < 5 || secondsInterval > 300) {
                 throw new ArgumentException(
                     "Intervalo deve estar entre 5 segundos e 5 minutos"
@@ -39,6 +40,7 @@ namespace Backup.Forms {
             }
             InitializeComponent();
             StartPosition = FormStartPosition.CenterParent;
+            this.drive = drive;
             int minutes = (secondsInterval / 60);
             int seconds = (secondsInterval % 60);
             lblTime.Text = Formatter.FormatInt(minutes, 2) + ":" +
@@ -53,6 +55,7 @@ namespace Backup.Forms {
         /// Desliga o computador.
         /// </summary>
         private void PowerOff() {
+            drive.Eject();
             WindowsSystem.Shutdown();
         }
 

@@ -118,10 +118,8 @@ namespace Backup.Drive {
         /// <param name="directory">Path do diretório</param>
         /// <param name="subdirectories">Lista dos subdiretórios.</param>
         private void ListSubdirectoriesTree(string directory, LinkedList<string> subdirectories) {
-            CheckIfTheProcessHasBeenAborted();
             List<string> list = new List<string>(Directory.GetDirectories(directory));
             foreach (String dir in list) {
-                CheckIfTheProcessHasBeenAborted();
                 subdirectories.AddLast(dir);
             }
             if (list.Count > 0) {
