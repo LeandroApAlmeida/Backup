@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Backup")]
-[assembly: AssemblyCopyright("08 de Abril de 2024")]
+[assembly: AssemblyCopyright("09 de Abril de 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

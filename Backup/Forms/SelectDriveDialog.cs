@@ -56,13 +56,13 @@ namespace Backup.Forms {
                 }
                 internalDrives = drivesManager.InternalDrives;
                 List<ListViewItem> listViewItems = new List<ListViewItem>();
-                List<string> destinationDrives = this.drive.DestinationDrives;
+                List<string> sourceDrives = this.drive.SourceDrives;
                 List<string> targetRestoreDrives =  SafeRestore.TargetDrives;
                 bool insertDrive;
                 for (int i = 0; i < internalDrives.Count; i++) {
                     insertDrive = false;
                     Drive.Drive drive = internalDrives[i];
-                    foreach (string letter in destinationDrives) {
+                    foreach (string letter in sourceDrives) {
                         if (letter.Equals(drive.Letter)) {
                             insertDrive = true;
                             break;

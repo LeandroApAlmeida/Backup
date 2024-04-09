@@ -245,6 +245,17 @@ namespace Backup.Drive {
 
 
         /// <summary>
+        /// Destructor da classe. Libera o Mutex para a alocação por outro processo.
+        /// </summary>
+        ~Drive() {
+            if (mutex != null) {
+                Unlock();
+                mutex?.Dispose();
+            }
+        }
+
+
+        /// <summary>
         /// Instalar a Unidade de Backup. Na instalação os seguintes arquivos serão criados na raiz 
         /// do drive:
         /// <br></br><br></br>
@@ -1057,7 +1068,7 @@ namespace Backup.Drive {
         /// o bloqueio, pois outro processo já o alocou.</returns>
         public bool Lock() {
             if (mutex != null) {
-                if (!mutex.WaitOne(100, false)) {
+                if (!mutex.WaitOne(1000, false)) {
                     isLocked = false;
                 } else {
                     isLocked = true;
@@ -1074,8 +1085,12 @@ namespace Backup.Drive {
         /// obtê-lo.
         /// </summary>
         public void Unlock() {
-            mutex?.ReleaseMutex();
-            isLocked = false;
+            if (isLocked) {
+                if (mutex != null) {
+                    mutex?.ReleaseMutex();
+                    isLocked = false;
+                }
+            }
         }
 
 
@@ -1310,7 +1325,10 @@ namespace Backup.Drive {
         }
 
 
-        public List<string> DestinationDrives {
+        /// <summary>
+        /// Obtém os drives locais de origem do backup.
+        /// </summary>
+        public List<string> SourceDrives {
             get {
                 List<string> drivesList = new List<string>();
                 List<string> list = new List<string>(Directory.GetDirectories(Letter + @"\backup"));

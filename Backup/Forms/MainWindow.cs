@@ -1325,6 +1325,26 @@ namespace Backup.Forms {
 
 
 
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
+            if (processingBackup) {
+                DialogResult dr = MessageBox.Show(
+                    "Um processo está em andamento. Sair assim mesmo?",
+                    "Atenção!",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Error
+                );
+                if (dr == DialogResult.No) {
+                    e.Cancel = true;
+                }
+            }
+            if (!e.Cancel) {
+                UsbMonitor.Instance.RevomeListener(this);
+                CloseDrive();
+                SaveConfigurations();
+            }
+        }
+
+
         private void rboExit_Click(object sender, EventArgs e) {
             CloseDrive();
         }
@@ -1355,11 +1375,6 @@ namespace Backup.Forms {
         }
 
 
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
-            UsbMonitor.Instance.RevomeListener(this);
-        }
-
-
         private void rbpBackup_ButtonMoreClick(object sender, EventArgs e) {
             
         }
@@ -1367,22 +1382,6 @@ namespace Backup.Forms {
 
         private void MainWindow_Load(object sender, EventArgs e) {
             ReadConfigurations();
-        }
-
-
-        private void MainWindow_FormClosing_1(object sender, FormClosingEventArgs e) {
-            if (processingBackup) {
-                DialogResult dr =  MessageBox.Show(
-                    "Um processo está em andamento. Sair assim mesmo?",
-                    "Atenção!",
-                    MessageBoxButtons.YesNo, 
-                    MessageBoxIcon.Error
-                );
-                if (dr == DialogResult.No) {
-                    e.Cancel = true;
-                }
-            }
-            SaveConfigurations();
         }
 
 
@@ -1455,7 +1454,7 @@ namespace Backup.Forms {
             SearchRestoreFiles();
         }
 
-
+       
     }
 
 }
