@@ -273,7 +273,7 @@ namespace Backup.Drive {
         ///
         /// <exception cref="Exception"></exception>
         public void Install() {
-            CheckPermission(false, true, true);
+            CheckPermission(false, false, false);
             StringBuilder sb = new StringBuilder(16);
             sb.Append("BDI#");
             Random rnd = new Random();
